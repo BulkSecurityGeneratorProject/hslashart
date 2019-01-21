@@ -24,6 +24,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.Validator;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,6 +50,15 @@ public class GalleryResourceIntTest {
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_CREATION_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATION_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_ORDER = 1;
+    private static final Integer UPDATED_ORDER = 2;
 
     @Autowired
     private GalleryRepository galleryRepository;
@@ -99,7 +110,10 @@ public class GalleryResourceIntTest {
      */
     public static Gallery createEntity() {
         Gallery gallery = new Gallery()
-            .title(DEFAULT_TITLE);
+            .title(DEFAULT_TITLE)
+            .creationDate(DEFAULT_CREATION_DATE)
+            .description(DEFAULT_DESCRIPTION)
+            .order(DEFAULT_ORDER);
         return gallery;
     }
 
@@ -124,6 +138,9 @@ public class GalleryResourceIntTest {
         assertThat(galleryList).hasSize(databaseSizeBeforeCreate + 1);
         Gallery testGallery = galleryList.get(galleryList.size() - 1);
         assertThat(testGallery.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testGallery.getCreationDate()).isEqualTo(DEFAULT_CREATION_DATE);
+        assertThat(testGallery.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testGallery.getOrder()).isEqualTo(DEFAULT_ORDER);
 
         // Validate the Gallery in Elasticsearch
         verify(mockGallerySearchRepository, times(1)).save(testGallery);
@@ -160,7 +177,10 @@ public class GalleryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(gallery.getId())))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].order").value(hasItem(DEFAULT_ORDER)));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -206,7 +226,10 @@ public class GalleryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(gallery.getId()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()));
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+            .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.order").value(DEFAULT_ORDER));
     }
 
     @Test
@@ -226,7 +249,10 @@ public class GalleryResourceIntTest {
         // Update the gallery
         Gallery updatedGallery = galleryRepository.findById(gallery.getId()).get();
         updatedGallery
-            .title(UPDATED_TITLE);
+            .title(UPDATED_TITLE)
+            .creationDate(UPDATED_CREATION_DATE)
+            .description(UPDATED_DESCRIPTION)
+            .order(UPDATED_ORDER);
 
         restGalleryMockMvc.perform(put("/api/galleries")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -238,6 +264,9 @@ public class GalleryResourceIntTest {
         assertThat(galleryList).hasSize(databaseSizeBeforeUpdate);
         Gallery testGallery = galleryList.get(galleryList.size() - 1);
         assertThat(testGallery.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testGallery.getCreationDate()).isEqualTo(UPDATED_CREATION_DATE);
+        assertThat(testGallery.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testGallery.getOrder()).isEqualTo(UPDATED_ORDER);
 
         // Validate the Gallery in Elasticsearch
         verify(mockGallerySearchRepository, times(1)).save(testGallery);
@@ -294,7 +323,10 @@ public class GalleryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(gallery.getId())))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].order").value(hasItem(DEFAULT_ORDER)));
     }
 
     @Test

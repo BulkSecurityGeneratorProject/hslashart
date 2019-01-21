@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "gallery",
+            "otherEntityName": "gallery",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "artist"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "biography",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cv",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "artist",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

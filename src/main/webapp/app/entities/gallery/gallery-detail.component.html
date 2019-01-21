@@ -9,11 +9,29 @@
                 <dd>
                     <span>{{gallery.title}}</span>
                 </dd>
+                <dt><span jhiTranslate="hslashartApp.gallery.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{gallery.creationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.gallery.description">Description</span></dt>
+                <dd>
+                    <span>{{gallery.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.gallery.order">Order</span></dt>
+                <dd>
+                    <span>{{gallery.order}}</span>
+                </dd>
                 <dt><span jhiTranslate="hslashartApp.gallery.artwork">Artwork</span></dt>
                 <dd>
                     <span *ngFor="let artwork of gallery.artworks; let last = last">
                         <a [routerLink]="['/artwork', artwork?.id, 'view' ]">{{artwork.id}}</a>{{last ? '' : ', '}}
                     </span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.gallery.artist">Artist</span></dt>
+                <dd>
+                    <div *ngIf="gallery.artist">
+                        <a [routerLink]="['/artist', gallery.artist?.id, 'view']">{{gallery.artist?.id}}</a>
+                    </div>
                 </dd>
             </dl>
 

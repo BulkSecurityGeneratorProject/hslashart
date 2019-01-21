@@ -4,6 +4,7 @@ import { HslashartCountryAreaModule } from './country-area/country-area.module';
 import { HslashartCountryModule } from './country/country.module';
 import { HslashartArtworkModule } from './artwork/artwork.module';
 import { HslashartGalleryModule } from './gallery/gallery.module';
+import { HslashartArtistModule } from './artist/artist.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -13,6 +14,7 @@ import { HslashartGalleryModule } from './gallery/gallery.module';
         HslashartCountryModule,
         HslashartArtworkModule,
         HslashartGalleryModule,
+        HslashartArtistModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

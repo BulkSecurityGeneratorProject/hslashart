@@ -39,10 +39,17 @@ describe('Gallery e2e test', () => {
 
         await galleryComponentsPage.clickOnCreateButton();
         await promise.all([
-            galleryUpdatePage.setTitleInput('title')
+            galleryUpdatePage.setTitleInput('title'),
+            galleryUpdatePage.setCreationDateInput('2000-12-31'),
+            galleryUpdatePage.setDescriptionInput('description'),
+            galleryUpdatePage.setOrderInput('5'),
             // galleryUpdatePage.artworkSelectLastOption(),
+            galleryUpdatePage.artistSelectLastOption()
         ]);
         expect(await galleryUpdatePage.getTitleInput()).to.eq('title');
+        expect(await galleryUpdatePage.getCreationDateInput()).to.eq('2000-12-31');
+        expect(await galleryUpdatePage.getDescriptionInput()).to.eq('description');
+        expect(await galleryUpdatePage.getOrderInput()).to.eq('5');
         await galleryUpdatePage.save();
         expect(await galleryUpdatePage.getSaveButton().isPresent()).to.be.false;
 

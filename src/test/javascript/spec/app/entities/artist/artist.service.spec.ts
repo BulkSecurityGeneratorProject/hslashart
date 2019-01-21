@@ -6,33 +6,33 @@ import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
-import { GalleryService } from 'app/entities/gallery/gallery.service';
-import { IGallery, Gallery } from 'app/shared/model/gallery.model';
+import { ArtistService } from 'app/entities/artist/artist.service';
+import { IArtist, Artist } from 'app/shared/model/artist.model';
 
 describe('Service Tests', () => {
-    describe('Gallery Service', () => {
+    describe('Artist Service', () => {
         let injector: TestBed;
-        let service: GalleryService;
+        let service: ArtistService;
         let httpMock: HttpTestingController;
-        let elemDefault: IGallery;
+        let elemDefault: IArtist;
         let currentDate: moment.Moment;
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [HttpClientTestingModule]
             });
             injector = getTestBed();
-            service = injector.get(GalleryService);
+            service = injector.get(ArtistService);
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Gallery('ID', 'AAAAAAA', currentDate, 'AAAAAAA', 0);
+            elemDefault = new Artist('ID', 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
             it('should find an element', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        creationDate: currentDate.format(DATE_FORMAT)
+                        birthDate: currentDate.format(DATE_FORMAT)
                     },
                     elemDefault
                 );
@@ -45,42 +45,45 @@ describe('Service Tests', () => {
                 req.flush(JSON.stringify(returnedFromService));
             });
 
-            it('should create a Gallery', async () => {
+            it('should create a Artist', async () => {
                 const returnedFromService = Object.assign(
                     {
                         id: 'ID',
-                        creationDate: currentDate.format(DATE_FORMAT)
+                        birthDate: currentDate.format(DATE_FORMAT)
                     },
                     elemDefault
                 );
                 const expected = Object.assign(
                     {
-                        creationDate: currentDate
+                        birthDate: currentDate
                     },
                     returnedFromService
                 );
                 service
-                    .create(new Gallery(null))
+                    .create(new Artist(null))
                     .pipe(take(1))
                     .subscribe(resp => expect(resp).toMatchObject({ body: expected }));
                 const req = httpMock.expectOne({ method: 'POST' });
                 req.flush(JSON.stringify(returnedFromService));
             });
 
-            it('should update a Gallery', async () => {
+            it('should update a Artist', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        title: 'BBBBBB',
-                        creationDate: currentDate.format(DATE_FORMAT),
-                        description: 'BBBBBB',
-                        order: 1
+                        firstName: 'BBBBBB',
+                        lastName: 'BBBBBB',
+                        birthDate: currentDate.format(DATE_FORMAT),
+                        city: 'BBBBBB',
+                        country: 'BBBBBB',
+                        biography: 'BBBBBB',
+                        cv: 'BBBBBB'
                     },
                     elemDefault
                 );
 
                 const expected = Object.assign(
                     {
-                        creationDate: currentDate
+                        birthDate: currentDate
                     },
                     returnedFromService
                 );
@@ -92,19 +95,22 @@ describe('Service Tests', () => {
                 req.flush(JSON.stringify(returnedFromService));
             });
 
-            it('should return a list of Gallery', async () => {
+            it('should return a list of Artist', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        title: 'BBBBBB',
-                        creationDate: currentDate.format(DATE_FORMAT),
-                        description: 'BBBBBB',
-                        order: 1
+                        firstName: 'BBBBBB',
+                        lastName: 'BBBBBB',
+                        birthDate: currentDate.format(DATE_FORMAT),
+                        city: 'BBBBBB',
+                        country: 'BBBBBB',
+                        biography: 'BBBBBB',
+                        cv: 'BBBBBB'
                     },
                     elemDefault
                 );
                 const expected = Object.assign(
                     {
-                        creationDate: currentDate
+                        birthDate: currentDate
                     },
                     returnedFromService
                 );
@@ -120,7 +126,7 @@ describe('Service Tests', () => {
                 httpMock.verify();
             });
 
-            it('should delete a Gallery', async () => {
+            it('should delete a Artist', async () => {
                 const rxPromise = service.delete('123').subscribe(resp => expect(resp.ok));
 
                 const req = httpMock.expectOne({ method: 'DELETE' });

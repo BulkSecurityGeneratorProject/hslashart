@@ -17,7 +17,11 @@
                 "title": "Gallery"
             },
             "title": "Title",
-            "artwork": "Artwork"
+            "creationDate": "Creation Date",
+            "description": "Description",
+            "order": "Order",
+            "artwork": "Artwork",
+            "artist": "Artist"
         }
     }
 }

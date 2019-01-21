@@ -9,12 +9,30 @@
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "gallery"
+        },
+        {
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
         {
             "fieldName": "title",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "order",
+            "fieldType": "Integer"
         }
     ],
     "dto": "no",
