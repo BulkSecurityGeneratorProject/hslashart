@@ -1,0 +1,52 @@
+{
+    "hslashartApp": {
+        "customer": {
+            "home": {
+                "title": "Customers",
+                "createLabel": "Create a new Customer",
+                "createOrEditLabel": "Create or edit a Customer",
+                "search": "Search for Customer"
+            },
+            "created": "A new Customer is created with identifier {{ param }}",
+            "updated": "A Customer is updated with identifier {{ param }}",
+            "deleted": "A Customer is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "genderOther": "Gender Other",
+            "phoneMain": "Phone Main",
+            "phoneMobile": "Phone Mobile",
+            "shippingLastName": "Shipping Last Name",
+            "shippingFirstName": "Shipping First Name",
+            "shippingGenderOther": "Shipping Gender Other",
+            "shippingAddressLine1": "Shipping Address Line 1",
+            "shippingAddressLine2": "Shipping Address Line 2",
+            "shippingCity": "Shipping City",
+            "shippingCommentary": "Shipping Commentary",
+            "billingLastName": "Billing Last Name",
+            "billingFirstName": "Billing First Name",
+            "billingGenderOther": "Billing Gender Other",
+            "billingAddressLine1": "Billing Address Line 1",
+            "billingAddressLine2": "Billing Address Line 2",
+            "shippingPostalCode": "Shipping Postal Code",
+            "billingPostalCode": "Billing Postal Code",
+            "shippingCountry": "Shipping Country",
+            "shippingProvince": "Shipping Province",
+            "shippingCountryState": "Shipping Country State",
+            "shippingTerritory": "Shipping Territory",
+            "billingCity": "Billing City",
+            "billingCountry": "Billing Country",
+            "billingProvince": "Billing Province",
+            "billingTerritory": "Billing Territory",
+            "billingCountryState": "Billing Country State",
+            "gender": "Gender",
+            "shippingGender": "Shipping Gender",
+            "billingGender": "Billing Gender"
+        }
+    }
+}

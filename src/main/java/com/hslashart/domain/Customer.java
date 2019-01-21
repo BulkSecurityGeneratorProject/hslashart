@@ -28,9 +28,6 @@ public class Customer implements Serializable {
     @Field("last_name")
     private String lastName;
 
-    @Field("gender")
-    private Gender gender;
-
     @Field("gender_other")
     private String genderOther;
 
@@ -45,9 +42,6 @@ public class Customer implements Serializable {
 
     @Field("shipping_first_name")
     private String shippingFirstName;
-
-    @Field("shipping_gender")
-    private Gender shippingGender;
 
     @Field("shipping_gender_other")
     private String shippingGenderOther;
@@ -69,9 +63,6 @@ public class Customer implements Serializable {
 
     @Field("billing_first_name")
     private String billingFirstName;
-
-    @Field("billing_gender")
-    private Gender billingGender;
 
     @Field("billing_gender_other")
     private String billingGenderOther;
@@ -115,9 +106,14 @@ public class Customer implements Serializable {
     @Field("billing_country_state")
     private String billingCountryState;
 
-    @DBRef
-    @Field("user")
-    private User user;
+    @Field("gender")
+    private Gender gender;
+
+    @Field("shipping_gender")
+    private Gender shippingGender;
+
+    @Field("billing_gender")
+    private Gender billingGender;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -152,19 +148,6 @@ public class Customer implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public Customer gender(Gender gender) {
-        this.gender = gender;
-        return this;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public String getGenderOther() {
@@ -230,19 +213,6 @@ public class Customer implements Serializable {
 
     public void setShippingFirstName(String shippingFirstName) {
         this.shippingFirstName = shippingFirstName;
-    }
-
-    public Gender getShippingGender() {
-        return shippingGender;
-    }
-
-    public Customer shippingGender(Gender shippingGender) {
-        this.shippingGender = shippingGender;
-        return this;
-    }
-
-    public void setShippingGender(Gender shippingGender) {
-        this.shippingGender = shippingGender;
     }
 
     public String getShippingGenderOther() {
@@ -334,19 +304,6 @@ public class Customer implements Serializable {
 
     public void setBillingFirstName(String billingFirstName) {
         this.billingFirstName = billingFirstName;
-    }
-
-    public Gender getBillingGender() {
-        return billingGender;
-    }
-
-    public Customer billingGender(Gender billingGender) {
-        this.billingGender = billingGender;
-        return this;
-    }
-
-    public void setBillingGender(Gender billingGender) {
-        this.billingGender = billingGender;
     }
 
     public String getBillingGenderOther() {
@@ -531,17 +488,43 @@ public class Customer implements Serializable {
         this.billingCountryState = billingCountryState;
     }
 
-    public User getUser() {
-        return user;
+    public Gender getGender() {
+        return gender;
     }
 
-    public Customer user(User user) {
-        this.user = user;
+    public Customer gender(Gender gender) {
+        this.gender = gender;
         return this;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Gender getShippingGender() {
+        return shippingGender;
+    }
+
+    public Customer shippingGender(Gender shippingGender) {
+        this.shippingGender = shippingGender;
+        return this;
+    }
+
+    public void setShippingGender(Gender shippingGender) {
+        this.shippingGender = shippingGender;
+    }
+
+    public Gender getBillingGender() {
+        return billingGender;
+    }
+
+    public Customer billingGender(Gender billingGender) {
+        this.billingGender = billingGender;
+        return this;
+    }
+
+    public void setBillingGender(Gender billingGender) {
+        this.billingGender = billingGender;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -571,13 +554,11 @@ public class Customer implements Serializable {
             "id=" + getId() +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
-            ", gender='" + getGender() + "'" +
             ", genderOther='" + getGenderOther() + "'" +
             ", phoneMain='" + getPhoneMain() + "'" +
             ", phoneMobile='" + getPhoneMobile() + "'" +
             ", shippingLastName='" + getShippingLastName() + "'" +
             ", shippingFirstName='" + getShippingFirstName() + "'" +
-            ", shippingGender='" + getShippingGender() + "'" +
             ", shippingGenderOther='" + getShippingGenderOther() + "'" +
             ", shippingAddressLine1='" + getShippingAddressLine1() + "'" +
             ", shippingAddressLine2='" + getShippingAddressLine2() + "'" +
@@ -585,7 +566,6 @@ public class Customer implements Serializable {
             ", shippingCommentary='" + getShippingCommentary() + "'" +
             ", billingLastName='" + getBillingLastName() + "'" +
             ", billingFirstName='" + getBillingFirstName() + "'" +
-            ", billingGender='" + getBillingGender() + "'" +
             ", billingGenderOther='" + getBillingGenderOther() + "'" +
             ", billingAddressLine1='" + getBillingAddressLine1() + "'" +
             ", billingAddressLine2='" + getBillingAddressLine2() + "'" +
@@ -600,6 +580,9 @@ public class Customer implements Serializable {
             ", billingProvince='" + getBillingProvince() + "'" +
             ", billingTerritory='" + getBillingTerritory() + "'" +
             ", billingCountryState='" + getBillingCountryState() + "'" +
+            ", gender='" + getGender() + "'" +
+            ", shippingGender='" + getShippingGender() + "'" +
+            ", billingGender='" + getBillingGender() + "'" +
             "}";
     }
 }

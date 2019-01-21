@@ -20,14 +20,6 @@
                         [(ngModel)]="customer.lastName" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.gender" for="field_gender">Gender</label>
-                    <select class="form-control" name="gender" [(ngModel)]="customer.gender" id="field_gender" >
-                        <option value="MALE">{{'hslashartApp.Gender.MALE' | translate}}</option>
-                        <option value="FEMALE">{{'hslashartApp.Gender.FEMALE' | translate}}</option>
-                        <option value="OTHER">{{'hslashartApp.Gender.OTHER' | translate}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hslashartApp.customer.genderOther" for="field_genderOther">Gender Other</label>
                     <input type="text" class="form-control" name="genderOther" id="field_genderOther"
                         [(ngModel)]="customer.genderOther" />
@@ -51,12 +43,6 @@
                     <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingFirstName" for="field_shippingFirstName">Shipping First Name</label>
                     <input type="text" class="form-control" name="shippingFirstName" id="field_shippingFirstName"
                         [(ngModel)]="customer.shippingFirstName" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingGender" for="field_shippingGender">Shipping Gender</label>
-                    <select class="form-control" name="shippingGender" [(ngModel)]="customer.shippingGender" id="field_shippingGender" >
-                        <option value="">{{'hslashartApp.Gender.' | translate}}</option>
-                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingGenderOther" for="field_shippingGenderOther">Shipping Gender Other</label>
@@ -92,12 +78,6 @@
                     <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingFirstName" for="field_billingFirstName">Billing First Name</label>
                     <input type="text" class="form-control" name="billingFirstName" id="field_billingFirstName"
                         [(ngModel)]="customer.billingFirstName" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingGender" for="field_billingGender">Billing Gender</label>
-                    <select class="form-control" name="billingGender" [(ngModel)]="customer.billingGender" id="field_billingGender" >
-                        <option value="">{{'hslashartApp.Gender.' | translate}}</option>
-                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingGenderOther" for="field_billingGenderOther">Billing Gender Other</label>
@@ -169,14 +149,31 @@
                     <input type="text" class="form-control" name="billingCountryState" id="field_billingCountryState"
                         [(ngModel)]="customer.billingCountryState" />
                 </div>
-
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.user" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" [(ngModel)]="customer.user" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="userOption.id === customer.user?.id ? customer.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" [(ngModel)]="customer.gender" id="field_gender" >
+                        <option value="MALE">{{'hslashartApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'hslashartApp.Gender.FEMALE' | translate}}</option>
+                        <option value="OTHER">{{'hslashartApp.Gender.OTHER' | translate}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingGender" for="field_shippingGender">Shipping Gender</label>
+                    <select class="form-control" name="shippingGender" [(ngModel)]="customer.shippingGender" id="field_shippingGender" >
+                        <option value="MALE">{{'hslashartApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'hslashartApp.Gender.FEMALE' | translate}}</option>
+                        <option value="OTHER">{{'hslashartApp.Gender.OTHER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingGender" for="field_billingGender">Billing Gender</label>
+                    <select class="form-control" name="billingGender" [(ngModel)]="customer.billingGender" id="field_billingGender" >
+                        <option value="MALE">{{'hslashartApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'hslashartApp.Gender.FEMALE' | translate}}</option>
+                        <option value="OTHER">{{'hslashartApp.Gender.OTHER' | translate}}</option>
+                    </select>
+                </div>
+
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

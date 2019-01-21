@@ -1,5 +1,3 @@
-import { IUser } from 'app/core/user/user.model';
-
 export const enum Gender {
     MALE = 'MALE',
     FEMALE = 'FEMALE',
@@ -10,13 +8,11 @@ export interface ICustomer {
     id?: string;
     firstName?: string;
     lastName?: string;
-    gender?: Gender;
     genderOther?: string;
     phoneMain?: string;
     phoneMobile?: string;
     shippingLastName?: string;
     shippingFirstName?: string;
-    shippingGender?: Gender;
     shippingGenderOther?: string;
     shippingAddressLine1?: string;
     shippingAddressLine2?: string;
@@ -24,7 +20,6 @@ export interface ICustomer {
     shippingCommentary?: string;
     billingLastName?: string;
     billingFirstName?: string;
-    billingGender?: Gender;
     billingGenderOther?: string;
     billingAddressLine1?: string;
     billingAddressLine2?: string;
@@ -39,7 +34,9 @@ export interface ICustomer {
     billingProvince?: string;
     billingTerritory?: string;
     billingCountryState?: string;
-    user?: IUser;
+    gender?: Gender;
+    shippingGender?: Gender;
+    billingGender?: Gender;
 }
 
 export class Customer implements ICustomer {
@@ -47,13 +44,11 @@ export class Customer implements ICustomer {
         public id?: string,
         public firstName?: string,
         public lastName?: string,
-        public gender?: Gender,
         public genderOther?: string,
         public phoneMain?: string,
         public phoneMobile?: string,
         public shippingLastName?: string,
         public shippingFirstName?: string,
-        public shippingGender?: Gender,
         public shippingGenderOther?: string,
         public shippingAddressLine1?: string,
         public shippingAddressLine2?: string,
@@ -61,7 +56,6 @@ export class Customer implements ICustomer {
         public shippingCommentary?: string,
         public billingLastName?: string,
         public billingFirstName?: string,
-        public billingGender?: Gender,
         public billingGenderOther?: string,
         public billingAddressLine1?: string,
         public billingAddressLine2?: string,
@@ -76,6 +70,8 @@ export class Customer implements ICustomer {
         public billingProvince?: string,
         public billingTerritory?: string,
         public billingCountryState?: string,
-        public user?: IUser
+        public gender?: Gender,
+        public shippingGender?: Gender,
+        public billingGender?: Gender
     ) {}
 }

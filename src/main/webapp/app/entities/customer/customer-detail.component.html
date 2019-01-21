@@ -13,10 +13,6 @@
                 <dd>
                     <span>{{customer.lastName}}</span>
                 </dd>
-                <dt><span jhiTranslate="hslashartApp.customer.gender">Gender</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.gender}}">{{customer.gender}}</span>
-                </dd>
                 <dt><span jhiTranslate="hslashartApp.customer.genderOther">Gender Other</span></dt>
                 <dd>
                     <span>{{customer.genderOther}}</span>
@@ -36,10 +32,6 @@
                 <dt><span jhiTranslate="hslashartApp.customer.shippingFirstName">Shipping First Name</span></dt>
                 <dd>
                     <span>{{customer.shippingFirstName}}</span>
-                </dd>
-                <dt><span jhiTranslate="hslashartApp.customer.shippingGender">Shipping Gender</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.shippingGender}}">{{customer.shippingGender}}</span>
                 </dd>
                 <dt><span jhiTranslate="hslashartApp.customer.shippingGenderOther">Shipping Gender Other</span></dt>
                 <dd>
@@ -68,10 +60,6 @@
                 <dt><span jhiTranslate="hslashartApp.customer.billingFirstName">Billing First Name</span></dt>
                 <dd>
                     <span>{{customer.billingFirstName}}</span>
-                </dd>
-                <dt><span jhiTranslate="hslashartApp.customer.billingGender">Billing Gender</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.billingGender}}">{{customer.billingGender}}</span>
                 </dd>
                 <dt><span jhiTranslate="hslashartApp.customer.billingGenderOther">Billing Gender Other</span></dt>
                 <dd>
@@ -129,9 +117,17 @@
                 <dd>
                     <span>{{customer.billingCountryState}}</span>
                 </dd>
-                <dt><span jhiTranslate="hslashartApp.customer.user">User</span></dt>
+                <dt><span jhiTranslate="hslashartApp.customer.gender">Gender</span></dt>
                 <dd>
-                    {{customer.user?.login}}
+                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.gender}}">{{customer.gender}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingGender">Shipping Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.shippingGender}}">{{customer.shippingGender}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingGender">Billing Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.billingGender}}">{{customer.billingGender}}</span>
                 </dd>
             </dl>
 

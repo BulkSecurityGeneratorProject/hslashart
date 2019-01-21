@@ -1,16 +1,7 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "",
-    "relationships": [
-        {
-            "relationshipName": "user",
-            "otherEntityName": "user",
-            "relationshipType": "one-to-one",
-            "otherEntityField": "login",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "customer"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "firstName",
@@ -19,11 +10,6 @@
         {
             "fieldName": "lastName",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "gender",
-            "fieldType": "Gender",
-            "fieldValues": "MALE,FEMALE,OTHER"
         },
         {
             "fieldName": "genderOther",
@@ -44,11 +30,6 @@
         {
             "fieldName": "shippingFirstName",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "shippingGender",
-            "fieldType": "Gender",
-            "fieldValues": ""
         },
         {
             "fieldName": "shippingGenderOther",
@@ -77,11 +58,6 @@
         {
             "fieldName": "billingFirstName",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "billingGender",
-            "fieldType": "Gender",
-            "fieldValues": ""
         },
         {
             "fieldName": "billingGenderOther",
@@ -138,6 +114,21 @@
         {
             "fieldName": "billingCountryState",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE,OTHER"
+        },
+        {
+            "fieldName": "shippingGender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE,OTHER"
+        },
+        {
+            "fieldName": "billingGender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE,OTHER"
         }
     ],
     "dto": "no",

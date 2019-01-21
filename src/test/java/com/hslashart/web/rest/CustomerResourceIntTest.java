@@ -53,9 +53,6 @@ public class CustomerResourceIntTest {
     private static final String DEFAULT_LAST_NAME = "AAAAAAAAAA";
     private static final String UPDATED_LAST_NAME = "BBBBBBBBBB";
 
-    private static final Gender DEFAULT_GENDER = Gender.MALE;
-    private static final Gender UPDATED_GENDER = Gender.FEMALE;
-
     private static final String DEFAULT_GENDER_OTHER = "AAAAAAAAAA";
     private static final String UPDATED_GENDER_OTHER = "BBBBBBBBBB";
 
@@ -70,9 +67,6 @@ public class CustomerResourceIntTest {
 
     private static final String DEFAULT_SHIPPING_FIRST_NAME = "AAAAAAAAAA";
     private static final String UPDATED_SHIPPING_FIRST_NAME = "BBBBBBBBBB";
-
-    private static final Gender DEFAULT_SHIPPING_GENDER = Gender.;
-    private static final Gender UPDATED_SHIPPING_GENDER = Gender.;
 
     private static final String DEFAULT_SHIPPING_GENDER_OTHER = "AAAAAAAAAA";
     private static final String UPDATED_SHIPPING_GENDER_OTHER = "BBBBBBBBBB";
@@ -94,9 +88,6 @@ public class CustomerResourceIntTest {
 
     private static final String DEFAULT_BILLING_FIRST_NAME = "AAAAAAAAAA";
     private static final String UPDATED_BILLING_FIRST_NAME = "BBBBBBBBBB";
-
-    private static final Gender DEFAULT_BILLING_GENDER = Gender.;
-    private static final Gender UPDATED_BILLING_GENDER = Gender.;
 
     private static final String DEFAULT_BILLING_GENDER_OTHER = "AAAAAAAAAA";
     private static final String UPDATED_BILLING_GENDER_OTHER = "BBBBBBBBBB";
@@ -139,6 +130,15 @@ public class CustomerResourceIntTest {
 
     private static final String DEFAULT_BILLING_COUNTRY_STATE = "AAAAAAAAAA";
     private static final String UPDATED_BILLING_COUNTRY_STATE = "BBBBBBBBBB";
+
+    private static final Gender DEFAULT_GENDER = Gender.MALE;
+    private static final Gender UPDATED_GENDER = Gender.FEMALE;
+
+    private static final Gender DEFAULT_SHIPPING_GENDER = Gender.MALE;
+    private static final Gender UPDATED_SHIPPING_GENDER = Gender.FEMALE;
+
+    private static final Gender DEFAULT_BILLING_GENDER = Gender.MALE;
+    private static final Gender UPDATED_BILLING_GENDER = Gender.FEMALE;
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -189,13 +189,11 @@ public class CustomerResourceIntTest {
         Customer customer = new Customer()
             .firstName(DEFAULT_FIRST_NAME)
             .lastName(DEFAULT_LAST_NAME)
-            .gender(DEFAULT_GENDER)
             .genderOther(DEFAULT_GENDER_OTHER)
             .phoneMain(DEFAULT_PHONE_MAIN)
             .phoneMobile(DEFAULT_PHONE_MOBILE)
             .shippingLastName(DEFAULT_SHIPPING_LAST_NAME)
             .shippingFirstName(DEFAULT_SHIPPING_FIRST_NAME)
-            .shippingGender(DEFAULT_SHIPPING_GENDER)
             .shippingGenderOther(DEFAULT_SHIPPING_GENDER_OTHER)
             .shippingAddressLine1(DEFAULT_SHIPPING_ADDRESS_LINE_1)
             .shippingAddressLine2(DEFAULT_SHIPPING_ADDRESS_LINE_2)
@@ -203,7 +201,6 @@ public class CustomerResourceIntTest {
             .shippingCommentary(DEFAULT_SHIPPING_COMMENTARY)
             .billingLastName(DEFAULT_BILLING_LAST_NAME)
             .billingFirstName(DEFAULT_BILLING_FIRST_NAME)
-            .billingGender(DEFAULT_BILLING_GENDER)
             .billingGenderOther(DEFAULT_BILLING_GENDER_OTHER)
             .billingAddressLine1(DEFAULT_BILLING_ADDRESS_LINE_1)
             .billingAddressLine2(DEFAULT_BILLING_ADDRESS_LINE_2)
@@ -217,7 +214,10 @@ public class CustomerResourceIntTest {
             .billingCountry(DEFAULT_BILLING_COUNTRY)
             .billingProvince(DEFAULT_BILLING_PROVINCE)
             .billingTerritory(DEFAULT_BILLING_TERRITORY)
-            .billingCountryState(DEFAULT_BILLING_COUNTRY_STATE);
+            .billingCountryState(DEFAULT_BILLING_COUNTRY_STATE)
+            .gender(DEFAULT_GENDER)
+            .shippingGender(DEFAULT_SHIPPING_GENDER)
+            .billingGender(DEFAULT_BILLING_GENDER);
         return customer;
     }
 
@@ -243,13 +243,11 @@ public class CustomerResourceIntTest {
         Customer testCustomer = customerList.get(customerList.size() - 1);
         assertThat(testCustomer.getFirstName()).isEqualTo(DEFAULT_FIRST_NAME);
         assertThat(testCustomer.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
-        assertThat(testCustomer.getGender()).isEqualTo(DEFAULT_GENDER);
         assertThat(testCustomer.getGenderOther()).isEqualTo(DEFAULT_GENDER_OTHER);
         assertThat(testCustomer.getPhoneMain()).isEqualTo(DEFAULT_PHONE_MAIN);
         assertThat(testCustomer.getPhoneMobile()).isEqualTo(DEFAULT_PHONE_MOBILE);
         assertThat(testCustomer.getShippingLastName()).isEqualTo(DEFAULT_SHIPPING_LAST_NAME);
         assertThat(testCustomer.getShippingFirstName()).isEqualTo(DEFAULT_SHIPPING_FIRST_NAME);
-        assertThat(testCustomer.getShippingGender()).isEqualTo(DEFAULT_SHIPPING_GENDER);
         assertThat(testCustomer.getShippingGenderOther()).isEqualTo(DEFAULT_SHIPPING_GENDER_OTHER);
         assertThat(testCustomer.getShippingAddressLine1()).isEqualTo(DEFAULT_SHIPPING_ADDRESS_LINE_1);
         assertThat(testCustomer.getShippingAddressLine2()).isEqualTo(DEFAULT_SHIPPING_ADDRESS_LINE_2);
@@ -257,7 +255,6 @@ public class CustomerResourceIntTest {
         assertThat(testCustomer.getShippingCommentary()).isEqualTo(DEFAULT_SHIPPING_COMMENTARY);
         assertThat(testCustomer.getBillingLastName()).isEqualTo(DEFAULT_BILLING_LAST_NAME);
         assertThat(testCustomer.getBillingFirstName()).isEqualTo(DEFAULT_BILLING_FIRST_NAME);
-        assertThat(testCustomer.getBillingGender()).isEqualTo(DEFAULT_BILLING_GENDER);
         assertThat(testCustomer.getBillingGenderOther()).isEqualTo(DEFAULT_BILLING_GENDER_OTHER);
         assertThat(testCustomer.getBillingAddressLine1()).isEqualTo(DEFAULT_BILLING_ADDRESS_LINE_1);
         assertThat(testCustomer.getBillingAddressLine2()).isEqualTo(DEFAULT_BILLING_ADDRESS_LINE_2);
@@ -272,6 +269,9 @@ public class CustomerResourceIntTest {
         assertThat(testCustomer.getBillingProvince()).isEqualTo(DEFAULT_BILLING_PROVINCE);
         assertThat(testCustomer.getBillingTerritory()).isEqualTo(DEFAULT_BILLING_TERRITORY);
         assertThat(testCustomer.getBillingCountryState()).isEqualTo(DEFAULT_BILLING_COUNTRY_STATE);
+        assertThat(testCustomer.getGender()).isEqualTo(DEFAULT_GENDER);
+        assertThat(testCustomer.getShippingGender()).isEqualTo(DEFAULT_SHIPPING_GENDER);
+        assertThat(testCustomer.getBillingGender()).isEqualTo(DEFAULT_BILLING_GENDER);
 
         // Validate the Customer in Elasticsearch
         verify(mockCustomerSearchRepository, times(1)).save(testCustomer);
@@ -310,13 +310,11 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(customer.getId())))
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME.toString())))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME.toString())))
-            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
             .andExpect(jsonPath("$.[*].genderOther").value(hasItem(DEFAULT_GENDER_OTHER.toString())))
             .andExpect(jsonPath("$.[*].phoneMain").value(hasItem(DEFAULT_PHONE_MAIN.toString())))
             .andExpect(jsonPath("$.[*].phoneMobile").value(hasItem(DEFAULT_PHONE_MOBILE.toString())))
             .andExpect(jsonPath("$.[*].shippingLastName").value(hasItem(DEFAULT_SHIPPING_LAST_NAME.toString())))
             .andExpect(jsonPath("$.[*].shippingFirstName").value(hasItem(DEFAULT_SHIPPING_FIRST_NAME.toString())))
-            .andExpect(jsonPath("$.[*].shippingGender").value(hasItem(DEFAULT_SHIPPING_GENDER.toString())))
             .andExpect(jsonPath("$.[*].shippingGenderOther").value(hasItem(DEFAULT_SHIPPING_GENDER_OTHER.toString())))
             .andExpect(jsonPath("$.[*].shippingAddressLine1").value(hasItem(DEFAULT_SHIPPING_ADDRESS_LINE_1.toString())))
             .andExpect(jsonPath("$.[*].shippingAddressLine2").value(hasItem(DEFAULT_SHIPPING_ADDRESS_LINE_2.toString())))
@@ -324,7 +322,6 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].shippingCommentary").value(hasItem(DEFAULT_SHIPPING_COMMENTARY.toString())))
             .andExpect(jsonPath("$.[*].billingLastName").value(hasItem(DEFAULT_BILLING_LAST_NAME.toString())))
             .andExpect(jsonPath("$.[*].billingFirstName").value(hasItem(DEFAULT_BILLING_FIRST_NAME.toString())))
-            .andExpect(jsonPath("$.[*].billingGender").value(hasItem(DEFAULT_BILLING_GENDER.toString())))
             .andExpect(jsonPath("$.[*].billingGenderOther").value(hasItem(DEFAULT_BILLING_GENDER_OTHER.toString())))
             .andExpect(jsonPath("$.[*].billingAddressLine1").value(hasItem(DEFAULT_BILLING_ADDRESS_LINE_1.toString())))
             .andExpect(jsonPath("$.[*].billingAddressLine2").value(hasItem(DEFAULT_BILLING_ADDRESS_LINE_2.toString())))
@@ -338,7 +335,10 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].billingCountry").value(hasItem(DEFAULT_BILLING_COUNTRY.toString())))
             .andExpect(jsonPath("$.[*].billingProvince").value(hasItem(DEFAULT_BILLING_PROVINCE.toString())))
             .andExpect(jsonPath("$.[*].billingTerritory").value(hasItem(DEFAULT_BILLING_TERRITORY.toString())))
-            .andExpect(jsonPath("$.[*].billingCountryState").value(hasItem(DEFAULT_BILLING_COUNTRY_STATE.toString())));
+            .andExpect(jsonPath("$.[*].billingCountryState").value(hasItem(DEFAULT_BILLING_COUNTRY_STATE.toString())))
+            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
+            .andExpect(jsonPath("$.[*].shippingGender").value(hasItem(DEFAULT_SHIPPING_GENDER.toString())))
+            .andExpect(jsonPath("$.[*].billingGender").value(hasItem(DEFAULT_BILLING_GENDER.toString())));
     }
     
     @Test
@@ -353,13 +353,11 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.id").value(customer.getId()))
             .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME.toString()))
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME.toString()))
-            .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
             .andExpect(jsonPath("$.genderOther").value(DEFAULT_GENDER_OTHER.toString()))
             .andExpect(jsonPath("$.phoneMain").value(DEFAULT_PHONE_MAIN.toString()))
             .andExpect(jsonPath("$.phoneMobile").value(DEFAULT_PHONE_MOBILE.toString()))
             .andExpect(jsonPath("$.shippingLastName").value(DEFAULT_SHIPPING_LAST_NAME.toString()))
             .andExpect(jsonPath("$.shippingFirstName").value(DEFAULT_SHIPPING_FIRST_NAME.toString()))
-            .andExpect(jsonPath("$.shippingGender").value(DEFAULT_SHIPPING_GENDER.toString()))
             .andExpect(jsonPath("$.shippingGenderOther").value(DEFAULT_SHIPPING_GENDER_OTHER.toString()))
             .andExpect(jsonPath("$.shippingAddressLine1").value(DEFAULT_SHIPPING_ADDRESS_LINE_1.toString()))
             .andExpect(jsonPath("$.shippingAddressLine2").value(DEFAULT_SHIPPING_ADDRESS_LINE_2.toString()))
@@ -367,7 +365,6 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.shippingCommentary").value(DEFAULT_SHIPPING_COMMENTARY.toString()))
             .andExpect(jsonPath("$.billingLastName").value(DEFAULT_BILLING_LAST_NAME.toString()))
             .andExpect(jsonPath("$.billingFirstName").value(DEFAULT_BILLING_FIRST_NAME.toString()))
-            .andExpect(jsonPath("$.billingGender").value(DEFAULT_BILLING_GENDER.toString()))
             .andExpect(jsonPath("$.billingGenderOther").value(DEFAULT_BILLING_GENDER_OTHER.toString()))
             .andExpect(jsonPath("$.billingAddressLine1").value(DEFAULT_BILLING_ADDRESS_LINE_1.toString()))
             .andExpect(jsonPath("$.billingAddressLine2").value(DEFAULT_BILLING_ADDRESS_LINE_2.toString()))
@@ -381,7 +378,10 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.billingCountry").value(DEFAULT_BILLING_COUNTRY.toString()))
             .andExpect(jsonPath("$.billingProvince").value(DEFAULT_BILLING_PROVINCE.toString()))
             .andExpect(jsonPath("$.billingTerritory").value(DEFAULT_BILLING_TERRITORY.toString()))
-            .andExpect(jsonPath("$.billingCountryState").value(DEFAULT_BILLING_COUNTRY_STATE.toString()));
+            .andExpect(jsonPath("$.billingCountryState").value(DEFAULT_BILLING_COUNTRY_STATE.toString()))
+            .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
+            .andExpect(jsonPath("$.shippingGender").value(DEFAULT_SHIPPING_GENDER.toString()))
+            .andExpect(jsonPath("$.billingGender").value(DEFAULT_BILLING_GENDER.toString()));
     }
 
     @Test
@@ -403,13 +403,11 @@ public class CustomerResourceIntTest {
         updatedCustomer
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
-            .gender(UPDATED_GENDER)
             .genderOther(UPDATED_GENDER_OTHER)
             .phoneMain(UPDATED_PHONE_MAIN)
             .phoneMobile(UPDATED_PHONE_MOBILE)
             .shippingLastName(UPDATED_SHIPPING_LAST_NAME)
             .shippingFirstName(UPDATED_SHIPPING_FIRST_NAME)
-            .shippingGender(UPDATED_SHIPPING_GENDER)
             .shippingGenderOther(UPDATED_SHIPPING_GENDER_OTHER)
             .shippingAddressLine1(UPDATED_SHIPPING_ADDRESS_LINE_1)
             .shippingAddressLine2(UPDATED_SHIPPING_ADDRESS_LINE_2)
@@ -417,7 +415,6 @@ public class CustomerResourceIntTest {
             .shippingCommentary(UPDATED_SHIPPING_COMMENTARY)
             .billingLastName(UPDATED_BILLING_LAST_NAME)
             .billingFirstName(UPDATED_BILLING_FIRST_NAME)
-            .billingGender(UPDATED_BILLING_GENDER)
             .billingGenderOther(UPDATED_BILLING_GENDER_OTHER)
             .billingAddressLine1(UPDATED_BILLING_ADDRESS_LINE_1)
             .billingAddressLine2(UPDATED_BILLING_ADDRESS_LINE_2)
@@ -431,7 +428,10 @@ public class CustomerResourceIntTest {
             .billingCountry(UPDATED_BILLING_COUNTRY)
             .billingProvince(UPDATED_BILLING_PROVINCE)
             .billingTerritory(UPDATED_BILLING_TERRITORY)
-            .billingCountryState(UPDATED_BILLING_COUNTRY_STATE);
+            .billingCountryState(UPDATED_BILLING_COUNTRY_STATE)
+            .gender(UPDATED_GENDER)
+            .shippingGender(UPDATED_SHIPPING_GENDER)
+            .billingGender(UPDATED_BILLING_GENDER);
 
         restCustomerMockMvc.perform(put("/api/customers")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -444,13 +444,11 @@ public class CustomerResourceIntTest {
         Customer testCustomer = customerList.get(customerList.size() - 1);
         assertThat(testCustomer.getFirstName()).isEqualTo(UPDATED_FIRST_NAME);
         assertThat(testCustomer.getLastName()).isEqualTo(UPDATED_LAST_NAME);
-        assertThat(testCustomer.getGender()).isEqualTo(UPDATED_GENDER);
         assertThat(testCustomer.getGenderOther()).isEqualTo(UPDATED_GENDER_OTHER);
         assertThat(testCustomer.getPhoneMain()).isEqualTo(UPDATED_PHONE_MAIN);
         assertThat(testCustomer.getPhoneMobile()).isEqualTo(UPDATED_PHONE_MOBILE);
         assertThat(testCustomer.getShippingLastName()).isEqualTo(UPDATED_SHIPPING_LAST_NAME);
         assertThat(testCustomer.getShippingFirstName()).isEqualTo(UPDATED_SHIPPING_FIRST_NAME);
-        assertThat(testCustomer.getShippingGender()).isEqualTo(UPDATED_SHIPPING_GENDER);
         assertThat(testCustomer.getShippingGenderOther()).isEqualTo(UPDATED_SHIPPING_GENDER_OTHER);
         assertThat(testCustomer.getShippingAddressLine1()).isEqualTo(UPDATED_SHIPPING_ADDRESS_LINE_1);
         assertThat(testCustomer.getShippingAddressLine2()).isEqualTo(UPDATED_SHIPPING_ADDRESS_LINE_2);
@@ -458,7 +456,6 @@ public class CustomerResourceIntTest {
         assertThat(testCustomer.getShippingCommentary()).isEqualTo(UPDATED_SHIPPING_COMMENTARY);
         assertThat(testCustomer.getBillingLastName()).isEqualTo(UPDATED_BILLING_LAST_NAME);
         assertThat(testCustomer.getBillingFirstName()).isEqualTo(UPDATED_BILLING_FIRST_NAME);
-        assertThat(testCustomer.getBillingGender()).isEqualTo(UPDATED_BILLING_GENDER);
         assertThat(testCustomer.getBillingGenderOther()).isEqualTo(UPDATED_BILLING_GENDER_OTHER);
         assertThat(testCustomer.getBillingAddressLine1()).isEqualTo(UPDATED_BILLING_ADDRESS_LINE_1);
         assertThat(testCustomer.getBillingAddressLine2()).isEqualTo(UPDATED_BILLING_ADDRESS_LINE_2);
@@ -473,6 +470,9 @@ public class CustomerResourceIntTest {
         assertThat(testCustomer.getBillingProvince()).isEqualTo(UPDATED_BILLING_PROVINCE);
         assertThat(testCustomer.getBillingTerritory()).isEqualTo(UPDATED_BILLING_TERRITORY);
         assertThat(testCustomer.getBillingCountryState()).isEqualTo(UPDATED_BILLING_COUNTRY_STATE);
+        assertThat(testCustomer.getGender()).isEqualTo(UPDATED_GENDER);
+        assertThat(testCustomer.getShippingGender()).isEqualTo(UPDATED_SHIPPING_GENDER);
+        assertThat(testCustomer.getBillingGender()).isEqualTo(UPDATED_BILLING_GENDER);
 
         // Validate the Customer in Elasticsearch
         verify(mockCustomerSearchRepository, times(1)).save(testCustomer);
@@ -531,13 +531,11 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(customer.getId())))
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME)))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME)))
-            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
             .andExpect(jsonPath("$.[*].genderOther").value(hasItem(DEFAULT_GENDER_OTHER)))
             .andExpect(jsonPath("$.[*].phoneMain").value(hasItem(DEFAULT_PHONE_MAIN)))
             .andExpect(jsonPath("$.[*].phoneMobile").value(hasItem(DEFAULT_PHONE_MOBILE)))
             .andExpect(jsonPath("$.[*].shippingLastName").value(hasItem(DEFAULT_SHIPPING_LAST_NAME)))
             .andExpect(jsonPath("$.[*].shippingFirstName").value(hasItem(DEFAULT_SHIPPING_FIRST_NAME)))
-            .andExpect(jsonPath("$.[*].shippingGender").value(hasItem(DEFAULT_SHIPPING_GENDER.toString())))
             .andExpect(jsonPath("$.[*].shippingGenderOther").value(hasItem(DEFAULT_SHIPPING_GENDER_OTHER)))
             .andExpect(jsonPath("$.[*].shippingAddressLine1").value(hasItem(DEFAULT_SHIPPING_ADDRESS_LINE_1)))
             .andExpect(jsonPath("$.[*].shippingAddressLine2").value(hasItem(DEFAULT_SHIPPING_ADDRESS_LINE_2)))
@@ -545,7 +543,6 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].shippingCommentary").value(hasItem(DEFAULT_SHIPPING_COMMENTARY)))
             .andExpect(jsonPath("$.[*].billingLastName").value(hasItem(DEFAULT_BILLING_LAST_NAME)))
             .andExpect(jsonPath("$.[*].billingFirstName").value(hasItem(DEFAULT_BILLING_FIRST_NAME)))
-            .andExpect(jsonPath("$.[*].billingGender").value(hasItem(DEFAULT_BILLING_GENDER.toString())))
             .andExpect(jsonPath("$.[*].billingGenderOther").value(hasItem(DEFAULT_BILLING_GENDER_OTHER)))
             .andExpect(jsonPath("$.[*].billingAddressLine1").value(hasItem(DEFAULT_BILLING_ADDRESS_LINE_1)))
             .andExpect(jsonPath("$.[*].billingAddressLine2").value(hasItem(DEFAULT_BILLING_ADDRESS_LINE_2)))
@@ -559,7 +556,10 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].billingCountry").value(hasItem(DEFAULT_BILLING_COUNTRY)))
             .andExpect(jsonPath("$.[*].billingProvince").value(hasItem(DEFAULT_BILLING_PROVINCE)))
             .andExpect(jsonPath("$.[*].billingTerritory").value(hasItem(DEFAULT_BILLING_TERRITORY)))
-            .andExpect(jsonPath("$.[*].billingCountryState").value(hasItem(DEFAULT_BILLING_COUNTRY_STATE)));
+            .andExpect(jsonPath("$.[*].billingCountryState").value(hasItem(DEFAULT_BILLING_COUNTRY_STATE)))
+            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
+            .andExpect(jsonPath("$.[*].shippingGender").value(hasItem(DEFAULT_SHIPPING_GENDER.toString())))
+            .andExpect(jsonPath("$.[*].billingGender").value(hasItem(DEFAULT_BILLING_GENDER.toString())));
     }
 
     @Test
