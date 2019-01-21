@@ -9,6 +9,8 @@
                 "main": "Entités",
                 "countryArea": "Country Area",
                 "country": "Country",
+                "artwork": "Artwork",
+                "gallery": "Gallery",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

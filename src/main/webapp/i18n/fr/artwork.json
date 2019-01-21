@@ -1,0 +1,23 @@
+{
+    "hslashartApp": {
+        "artwork": {
+            "home": {
+                "title": "Artworks",
+                "createLabel": "Créer un nouveau Artwork",
+                "createOrEditLabel": "Créer ou éditer un Artwork",
+                "search": "Recherche pour Artwork"
+            },
+            "created": "Un nouveau Artwork a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Artwork avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Artwork avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Artwork {{ id }} ?"
+            },
+            "detail": {
+                "title": "Artwork"
+            },
+            "title": "Title",
+            "gallery": "Gallery"
+        }
+    }
+}
