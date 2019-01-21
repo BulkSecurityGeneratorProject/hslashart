@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="countryArea">
+            <h2><span jhiTranslate="hslashartApp.countryArea.detail.title">Country Area</span> {{countryArea.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hslashartApp.countryArea.name">Name</span></dt>
+                <dd>
+                    <span>{{countryArea.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.countryArea.code">Code</span></dt>
+                <dd>
+                    <span>{{countryArea.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.countryArea.country">Country</span></dt>
+                <dd>
+                    <div *ngIf="countryArea.country">
+                        <a [routerLink]="['/country', countryArea.country?.id, 'view']">{{countryArea.country?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/country-area', countryArea.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

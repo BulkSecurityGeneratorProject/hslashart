@@ -1,0 +1,24 @@
+{
+    "hslashartApp": {
+        "countryArea": {
+            "home": {
+                "title": "CountryAreas",
+                "createLabel": "Créer un nouveau Country Area",
+                "createOrEditLabel": "Créer ou éditer un Country Area",
+                "search": "Recherche pour Country Area"
+            },
+            "created": "Un nouveau Country Area a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Country Area avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Country Area avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Country Area {{ id }} ?"
+            },
+            "detail": {
+                "title": "Country Area"
+            },
+            "name": "Name",
+            "code": "Code",
+            "country": "Country"
+        }
+    }
+}

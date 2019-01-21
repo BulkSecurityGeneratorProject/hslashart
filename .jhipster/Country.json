@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "province",
+            "otherEntityName": "countryArea",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "country"
+        },
+        {
+            "relationshipName": "territory",
+            "otherEntityName": "countryArea",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "country"
+        },
+        {
+            "relationshipName": "countryState",
+            "otherEntityName": "countryArea",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "country"
+        },
+        {
+            "relationshipName": "city",
+            "otherEntityName": "countryArea",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "country"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "country",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
