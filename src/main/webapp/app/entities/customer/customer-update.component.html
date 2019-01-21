@@ -1,0 +1,191 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-customer-heading" jhiTranslate="hslashartApp.customer.home.createOrEditLabel">Create or edit a Customer</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!customer.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="customer.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.firstName" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                        [(ngModel)]="customer.firstName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.lastName" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                        [(ngModel)]="customer.lastName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" [(ngModel)]="customer.gender" id="field_gender" >
+                        <option value="MALE">{{'hslashartApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'hslashartApp.Gender.FEMALE' | translate}}</option>
+                        <option value="OTHER">{{'hslashartApp.Gender.OTHER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.genderOther" for="field_genderOther">Gender Other</label>
+                    <input type="text" class="form-control" name="genderOther" id="field_genderOther"
+                        [(ngModel)]="customer.genderOther" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.phoneMain" for="field_phoneMain">Phone Main</label>
+                    <input type="text" class="form-control" name="phoneMain" id="field_phoneMain"
+                        [(ngModel)]="customer.phoneMain" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.phoneMobile" for="field_phoneMobile">Phone Mobile</label>
+                    <input type="text" class="form-control" name="phoneMobile" id="field_phoneMobile"
+                        [(ngModel)]="customer.phoneMobile" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingLastName" for="field_shippingLastName">Shipping Last Name</label>
+                    <input type="text" class="form-control" name="shippingLastName" id="field_shippingLastName"
+                        [(ngModel)]="customer.shippingLastName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingFirstName" for="field_shippingFirstName">Shipping First Name</label>
+                    <input type="text" class="form-control" name="shippingFirstName" id="field_shippingFirstName"
+                        [(ngModel)]="customer.shippingFirstName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingGender" for="field_shippingGender">Shipping Gender</label>
+                    <select class="form-control" name="shippingGender" [(ngModel)]="customer.shippingGender" id="field_shippingGender" >
+                        <option value="">{{'hslashartApp.Gender.' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingGenderOther" for="field_shippingGenderOther">Shipping Gender Other</label>
+                    <input type="text" class="form-control" name="shippingGenderOther" id="field_shippingGenderOther"
+                        [(ngModel)]="customer.shippingGenderOther" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingAddressLine1" for="field_shippingAddressLine1">Shipping Address Line 1</label>
+                    <input type="text" class="form-control" name="shippingAddressLine1" id="field_shippingAddressLine1"
+                        [(ngModel)]="customer.shippingAddressLine1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingAddressLine2" for="field_shippingAddressLine2">Shipping Address Line 2</label>
+                    <input type="text" class="form-control" name="shippingAddressLine2" id="field_shippingAddressLine2"
+                        [(ngModel)]="customer.shippingAddressLine2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingCity" for="field_shippingCity">Shipping City</label>
+                    <input type="text" class="form-control" name="shippingCity" id="field_shippingCity"
+                        [(ngModel)]="customer.shippingCity" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingCommentary" for="field_shippingCommentary">Shipping Commentary</label>
+                    <input type="text" class="form-control" name="shippingCommentary" id="field_shippingCommentary"
+                        [(ngModel)]="customer.shippingCommentary" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingLastName" for="field_billingLastName">Billing Last Name</label>
+                    <input type="text" class="form-control" name="billingLastName" id="field_billingLastName"
+                        [(ngModel)]="customer.billingLastName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingFirstName" for="field_billingFirstName">Billing First Name</label>
+                    <input type="text" class="form-control" name="billingFirstName" id="field_billingFirstName"
+                        [(ngModel)]="customer.billingFirstName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingGender" for="field_billingGender">Billing Gender</label>
+                    <select class="form-control" name="billingGender" [(ngModel)]="customer.billingGender" id="field_billingGender" >
+                        <option value="">{{'hslashartApp.Gender.' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingGenderOther" for="field_billingGenderOther">Billing Gender Other</label>
+                    <input type="text" class="form-control" name="billingGenderOther" id="field_billingGenderOther"
+                        [(ngModel)]="customer.billingGenderOther" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingAddressLine1" for="field_billingAddressLine1">Billing Address Line 1</label>
+                    <input type="text" class="form-control" name="billingAddressLine1" id="field_billingAddressLine1"
+                        [(ngModel)]="customer.billingAddressLine1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingAddressLine2" for="field_billingAddressLine2">Billing Address Line 2</label>
+                    <input type="text" class="form-control" name="billingAddressLine2" id="field_billingAddressLine2"
+                        [(ngModel)]="customer.billingAddressLine2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingPostalCode" for="field_shippingPostalCode">Shipping Postal Code</label>
+                    <input type="text" class="form-control" name="shippingPostalCode" id="field_shippingPostalCode"
+                        [(ngModel)]="customer.shippingPostalCode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingPostalCode" for="field_billingPostalCode">Billing Postal Code</label>
+                    <input type="text" class="form-control" name="billingPostalCode" id="field_billingPostalCode"
+                        [(ngModel)]="customer.billingPostalCode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingCountry" for="field_shippingCountry">Shipping Country</label>
+                    <input type="text" class="form-control" name="shippingCountry" id="field_shippingCountry"
+                        [(ngModel)]="customer.shippingCountry" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingProvince" for="field_shippingProvince">Shipping Province</label>
+                    <input type="text" class="form-control" name="shippingProvince" id="field_shippingProvince"
+                        [(ngModel)]="customer.shippingProvince" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingCountryState" for="field_shippingCountryState">Shipping Country State</label>
+                    <input type="text" class="form-control" name="shippingCountryState" id="field_shippingCountryState"
+                        [(ngModel)]="customer.shippingCountryState" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.shippingTerritory" for="field_shippingTerritory">Shipping Territory</label>
+                    <input type="text" class="form-control" name="shippingTerritory" id="field_shippingTerritory"
+                        [(ngModel)]="customer.shippingTerritory" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingCity" for="field_billingCity">Billing City</label>
+                    <input type="text" class="form-control" name="billingCity" id="field_billingCity"
+                        [(ngModel)]="customer.billingCity" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingCountry" for="field_billingCountry">Billing Country</label>
+                    <input type="text" class="form-control" name="billingCountry" id="field_billingCountry"
+                        [(ngModel)]="customer.billingCountry" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingProvince" for="field_billingProvince">Billing Province</label>
+                    <input type="text" class="form-control" name="billingProvince" id="field_billingProvince"
+                        [(ngModel)]="customer.billingProvince" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingTerritory" for="field_billingTerritory">Billing Territory</label>
+                    <input type="text" class="form-control" name="billingTerritory" id="field_billingTerritory"
+                        [(ngModel)]="customer.billingTerritory" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.billingCountryState" for="field_billingCountryState">Billing Country State</label>
+                    <input type="text" class="form-control" name="billingCountryState" id="field_billingCountryState"
+                        [(ngModel)]="customer.billingCountryState" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.customer.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="customer.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === customer.user?.id ? customer.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

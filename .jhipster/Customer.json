@@ -1,0 +1,149 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "customer"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE,OTHER"
+        },
+        {
+            "fieldName": "genderOther",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneMain",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneMobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingLastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingFirstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingGender",
+            "fieldType": "Gender",
+            "fieldValues": ""
+        },
+        {
+            "fieldName": "shippingGenderOther",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingAddressLine1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingAddressLine2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingCity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingCommentary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingLastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingFirstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingGender",
+            "fieldType": "Gender",
+            "fieldValues": ""
+        },
+        {
+            "fieldName": "billingGenderOther",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingAddressLine1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingAddressLine2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingPostalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingPostalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingCountry",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingProvince",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingCountryState",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shippingTerritory",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingCity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingCountry",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingProvince",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingTerritory",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "billingCountryState",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "customer",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,141 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="hslashartApp.customer.home.title">Customers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-customer" [routerLink]="['/customer/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="hslashartApp.customer.home.createLabel">
+            Create new Customer
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'hslashartApp.customer.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="customers">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstName"><span jhiTranslate="hslashartApp.customer.firstName">First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="hslashartApp.customer.lastName">Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="gender"><span jhiTranslate="hslashartApp.customer.gender">Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="genderOther"><span jhiTranslate="hslashartApp.customer.genderOther">Gender Other</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneMain"><span jhiTranslate="hslashartApp.customer.phoneMain">Phone Main</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneMobile"><span jhiTranslate="hslashartApp.customer.phoneMobile">Phone Mobile</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingLastName"><span jhiTranslate="hslashartApp.customer.shippingLastName">Shipping Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingFirstName"><span jhiTranslate="hslashartApp.customer.shippingFirstName">Shipping First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingGender"><span jhiTranslate="hslashartApp.customer.shippingGender">Shipping Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingGenderOther"><span jhiTranslate="hslashartApp.customer.shippingGenderOther">Shipping Gender Other</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingAddressLine1"><span jhiTranslate="hslashartApp.customer.shippingAddressLine1">Shipping Address Line 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingAddressLine2"><span jhiTranslate="hslashartApp.customer.shippingAddressLine2">Shipping Address Line 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingCity"><span jhiTranslate="hslashartApp.customer.shippingCity">Shipping City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingCommentary"><span jhiTranslate="hslashartApp.customer.shippingCommentary">Shipping Commentary</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingLastName"><span jhiTranslate="hslashartApp.customer.billingLastName">Billing Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingFirstName"><span jhiTranslate="hslashartApp.customer.billingFirstName">Billing First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingGender"><span jhiTranslate="hslashartApp.customer.billingGender">Billing Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingGenderOther"><span jhiTranslate="hslashartApp.customer.billingGenderOther">Billing Gender Other</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingAddressLine1"><span jhiTranslate="hslashartApp.customer.billingAddressLine1">Billing Address Line 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingAddressLine2"><span jhiTranslate="hslashartApp.customer.billingAddressLine2">Billing Address Line 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingPostalCode"><span jhiTranslate="hslashartApp.customer.shippingPostalCode">Shipping Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingPostalCode"><span jhiTranslate="hslashartApp.customer.billingPostalCode">Billing Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingCountry"><span jhiTranslate="hslashartApp.customer.shippingCountry">Shipping Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingProvince"><span jhiTranslate="hslashartApp.customer.shippingProvince">Shipping Province</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingCountryState"><span jhiTranslate="hslashartApp.customer.shippingCountryState">Shipping Country State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="shippingTerritory"><span jhiTranslate="hslashartApp.customer.shippingTerritory">Shipping Territory</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingCity"><span jhiTranslate="hslashartApp.customer.billingCity">Billing City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingCountry"><span jhiTranslate="hslashartApp.customer.billingCountry">Billing Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingProvince"><span jhiTranslate="hslashartApp.customer.billingProvince">Billing Province</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingTerritory"><span jhiTranslate="hslashartApp.customer.billingTerritory">Billing Territory</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="billingCountryState"><span jhiTranslate="hslashartApp.customer.billingCountryState">Billing Country State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="user.login"><span jhiTranslate="hslashartApp.customer.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let customer of customers ;trackBy: trackId">
+                <td><a [routerLink]="['/customer', customer.id, 'view' ]">{{customer.id}}</a></td>
+                <td>{{customer.firstName}}</td>
+                <td>{{customer.lastName}}</td>
+                <td jhiTranslate="{{'hslashartApp.Gender.' + customer.gender}}">{{customer.gender}}</td>
+                <td>{{customer.genderOther}}</td>
+                <td>{{customer.phoneMain}}</td>
+                <td>{{customer.phoneMobile}}</td>
+                <td>{{customer.shippingLastName}}</td>
+                <td>{{customer.shippingFirstName}}</td>
+                <td jhiTranslate="{{'hslashartApp.Gender.' + customer.shippingGender}}">{{customer.shippingGender}}</td>
+                <td>{{customer.shippingGenderOther}}</td>
+                <td>{{customer.shippingAddressLine1}}</td>
+                <td>{{customer.shippingAddressLine2}}</td>
+                <td>{{customer.shippingCity}}</td>
+                <td>{{customer.shippingCommentary}}</td>
+                <td>{{customer.billingLastName}}</td>
+                <td>{{customer.billingFirstName}}</td>
+                <td jhiTranslate="{{'hslashartApp.Gender.' + customer.billingGender}}">{{customer.billingGender}}</td>
+                <td>{{customer.billingGenderOther}}</td>
+                <td>{{customer.billingAddressLine1}}</td>
+                <td>{{customer.billingAddressLine2}}</td>
+                <td>{{customer.shippingPostalCode}}</td>
+                <td>{{customer.billingPostalCode}}</td>
+                <td>{{customer.shippingCountry}}</td>
+                <td>{{customer.shippingProvince}}</td>
+                <td>{{customer.shippingCountryState}}</td>
+                <td>{{customer.shippingTerritory}}</td>
+                <td>{{customer.billingCity}}</td>
+                <td>{{customer.billingCountry}}</td>
+                <td>{{customer.billingProvince}}</td>
+                <td>{{customer.billingTerritory}}</td>
+                <td>{{customer.billingCountryState}}</td>
+                <td>
+                    {{customer.user?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/customer', customer.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/customer', customer.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'customer/'+ customer.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="customers && customers.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

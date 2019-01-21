@@ -1,0 +1,151 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="customer">
+            <h2><span jhiTranslate="hslashartApp.customer.detail.title">Customer</span> {{customer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hslashartApp.customer.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{customer.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{customer.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.gender}}">{{customer.gender}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.genderOther">Gender Other</span></dt>
+                <dd>
+                    <span>{{customer.genderOther}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.phoneMain">Phone Main</span></dt>
+                <dd>
+                    <span>{{customer.phoneMain}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.phoneMobile">Phone Mobile</span></dt>
+                <dd>
+                    <span>{{customer.phoneMobile}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingLastName">Shipping Last Name</span></dt>
+                <dd>
+                    <span>{{customer.shippingLastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingFirstName">Shipping First Name</span></dt>
+                <dd>
+                    <span>{{customer.shippingFirstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingGender">Shipping Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.shippingGender}}">{{customer.shippingGender}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingGenderOther">Shipping Gender Other</span></dt>
+                <dd>
+                    <span>{{customer.shippingGenderOther}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingAddressLine1">Shipping Address Line 1</span></dt>
+                <dd>
+                    <span>{{customer.shippingAddressLine1}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingAddressLine2">Shipping Address Line 2</span></dt>
+                <dd>
+                    <span>{{customer.shippingAddressLine2}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingCity">Shipping City</span></dt>
+                <dd>
+                    <span>{{customer.shippingCity}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingCommentary">Shipping Commentary</span></dt>
+                <dd>
+                    <span>{{customer.shippingCommentary}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingLastName">Billing Last Name</span></dt>
+                <dd>
+                    <span>{{customer.billingLastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingFirstName">Billing First Name</span></dt>
+                <dd>
+                    <span>{{customer.billingFirstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingGender">Billing Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'hslashartApp.Gender.' + customer.billingGender}}">{{customer.billingGender}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingGenderOther">Billing Gender Other</span></dt>
+                <dd>
+                    <span>{{customer.billingGenderOther}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingAddressLine1">Billing Address Line 1</span></dt>
+                <dd>
+                    <span>{{customer.billingAddressLine1}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingAddressLine2">Billing Address Line 2</span></dt>
+                <dd>
+                    <span>{{customer.billingAddressLine2}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingPostalCode">Shipping Postal Code</span></dt>
+                <dd>
+                    <span>{{customer.shippingPostalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingPostalCode">Billing Postal Code</span></dt>
+                <dd>
+                    <span>{{customer.billingPostalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingCountry">Shipping Country</span></dt>
+                <dd>
+                    <span>{{customer.shippingCountry}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingProvince">Shipping Province</span></dt>
+                <dd>
+                    <span>{{customer.shippingProvince}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingCountryState">Shipping Country State</span></dt>
+                <dd>
+                    <span>{{customer.shippingCountryState}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.shippingTerritory">Shipping Territory</span></dt>
+                <dd>
+                    <span>{{customer.shippingTerritory}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingCity">Billing City</span></dt>
+                <dd>
+                    <span>{{customer.billingCity}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingCountry">Billing Country</span></dt>
+                <dd>
+                    <span>{{customer.billingCountry}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingProvince">Billing Province</span></dt>
+                <dd>
+                    <span>{{customer.billingProvince}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingTerritory">Billing Territory</span></dt>
+                <dd>
+                    <span>{{customer.billingTerritory}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.billingCountryState">Billing Country State</span></dt>
+                <dd>
+                    <span>{{customer.billingCountryState}}</span>
+                </dd>
+                <dt><span jhiTranslate="hslashartApp.customer.user">User</span></dt>
+                <dd>
+                    {{customer.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/customer', customer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
