@@ -7,42 +7,42 @@ import { map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
-import { IArtwork } from 'app/shared/model/artwork.model';
+import { IArtist } from 'app/shared/model/artist.model';
 
-type EntityResponseType = HttpResponse<IArtwork>;
-type EntityArrayResponseType = HttpResponse<IArtwork[]>;
+type EntityResponseType = HttpResponse<IArtist>;
+type EntityArrayResponseType = HttpResponse<IArtist[]>;
 
 @Injectable({ providedIn: 'root' })
-export class ArtworkService {
-    public resourceUrl = SERVER_API_URL + 'api/artworks';
-    public resourceSearchUrl = SERVER_API_URL + 'api/_search/artworks';
+export class ArtistService {
+    public resourceUrl = SERVER_API_URL + 'api/artists';
+    public resourceSearchUrl = SERVER_API_URL + 'api/_search/artists';
 
     constructor(protected http: HttpClient) {}
 
-    create(artwork: IArtwork): Observable<EntityResponseType> {
-        const copy = this.convertDateFromClient(artwork);
+    create(artist: IArtist): Observable<EntityResponseType> {
+        const copy = this.convertDateFromClient(artist);
         return this.http
-            .post<IArtwork>(this.resourceUrl, copy, { observe: 'response' })
+            .post<IArtist>(this.resourceUrl, copy, { observe: 'response' })
             .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 
-    update(artwork: IArtwork): Observable<EntityResponseType> {
-        const copy = this.convertDateFromClient(artwork);
+    update(artist: IArtist): Observable<EntityResponseType> {
+        const copy = this.convertDateFromClient(artist);
         return this.http
-            .put<IArtwork>(this.resourceUrl, copy, { observe: 'response' })
+            .put<IArtist>(this.resourceUrl, copy, { observe: 'response' })
             .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 
     find(id: string): Observable<EntityResponseType> {
         return this.http
-            .get<IArtwork>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+            .get<IArtist>(`${this.resourceUrl}/${id}`, { observe: 'response' })
             .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
         return this.http
-            .get<IArtwork[]>(this.resourceUrl, { params: options, observe: 'response' })
+            .get<IArtist[]>(this.resourceUrl, { params: options, observe: 'response' })
             .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
     }
 
@@ -53,28 +53,28 @@ export class ArtworkService {
     search(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
         return this.http
-            .get<IArtwork[]>(this.resourceSearchUrl, { params: options, observe: 'response' })
+            .get<IArtist[]>(this.resourceSearchUrl, { params: options, observe: 'response' })
             .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
     }
 
-    protected convertDateFromClient(artwork: IArtwork): IArtwork {
-        const copy: IArtwork = Object.assign({}, artwork, {
-            creationDate: artwork.creationDate != null && artwork.creationDate.isValid() ? artwork.creationDate.format(DATE_FORMAT) : null
+    protected convertDateFromClient(artist: IArtist): IArtist {
+        const copy: IArtist = Object.assign({}, artist, {
+            birthDate: artist.birthDate != null && artist.birthDate.isValid() ? artist.birthDate.format(DATE_FORMAT) : null
         });
         return copy;
     }
 
     protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
         if (res.body) {
-            res.body.creationDate = res.body.creationDate != null ? moment(res.body.creationDate) : null;
+            res.body.birthDate = res.body.birthDate != null ? moment(res.body.birthDate) : null;
         }
         return res;
     }
 
     protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
         if (res.body) {
-            res.body.forEach((artwork: IArtwork) => {
-                artwork.creationDate = artwork.creationDate != null ? moment(artwork.creationDate) : null;
+            res.body.forEach((artist: IArtist) => {
+                artist.birthDate = artist.birthDate != null ? moment(artist.birthDate) : null;
             });
         }
         return res;

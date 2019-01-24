@@ -6,9 +6,9 @@ import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
 
 import { IArtwork } from 'app/shared/model/artwork.model';
-import { ArtworkService } from './artwork.service';
 import { IGallery } from 'app/shared/model/gallery.model';
 import { GalleryService } from 'app/entities/gallery';
+import { ArtworkService } from 'app/services/artwork.service';
 
 @Component({
     selector: 'jhi-artwork-update',

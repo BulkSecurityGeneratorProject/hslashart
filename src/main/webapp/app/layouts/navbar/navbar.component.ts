@@ -7,6 +7,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, AccountService, LoginModalService, LoginService } from 'app/core';
 import { ProfileService } from '../profiles/profile.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'jhi-navbar',
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
-
+    currentLanguage: string;
+    altLanguage: string;
     constructor(
         private loginService: LoginService,
         private languageService: JhiLanguageService,
@@ -39,7 +41,10 @@ export class NavbarComponent implements OnInit {
         this.languageHelper.getAll().then(languages => {
             this.languages = languages;
         });
-
+        this.languageService.getCurrent().then(lng => {
+            this.currentLanguage = lng;
+            this.altLanguage = this.languages.find(language => language !== lng);
+        });
         this.profileService.getProfileInfo().then(profileInfo => {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
@@ -49,6 +54,10 @@ export class NavbarComponent implements OnInit {
     changeLanguage(languageKey: string) {
         this.sessionStorage.store('locale', languageKey);
         this.languageService.changeLanguage(languageKey);
+        this.languageService.getCurrent().then(lng => {
+            this.currentLanguage = lng;
+            this.altLanguage = this.languages.find(language => language !== lng);
+        });
     }
 
     collapseNavbar() {

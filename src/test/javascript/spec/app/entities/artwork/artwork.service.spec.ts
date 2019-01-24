@@ -4,8 +4,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { ArtworkService } from 'app/entities/artwork/artwork.service';
-import { IArtwork, Artwork } from 'app/shared/model/artwork.model';
+import { IArtwork, Artwork, Currency, Availability } from 'app/shared/model/artwork.model';
 
 describe('Service Tests', () => {
     describe('Artwork Service', () => {
@@ -13,6 +15,7 @@ describe('Service Tests', () => {
         let service: ArtworkService;
         let httpMock: HttpTestingController;
         let elemDefault: IArtwork;
+        let currentDate: moment.Moment;
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [HttpClientTestingModule]
@@ -20,13 +23,33 @@ describe('Service Tests', () => {
             injector = getTestBed();
             service = injector.get(ArtworkService);
             httpMock = injector.get(HttpTestingController);
+            currentDate = moment();
 
-            elemDefault = new Artwork('ID', 'AAAAAAA');
+            elemDefault = new Artwork(
+                'ID',
+                'AAAAAAA',
+                'AAAAAAA',
+                0,
+                Currency.CA,
+                'AAAAAAA',
+                'AAAAAAA',
+                'AAAAAAA',
+                currentDate,
+                'AAAAAAA',
+                'AAAAAAA',
+                'AAAAAAA',
+                Availability.AVAILABLE
+            );
         });
 
         describe('Service methods', async () => {
             it('should find an element', async () => {
-                const returnedFromService = Object.assign({}, elemDefault);
+                const returnedFromService = Object.assign(
+                    {
+                        creationDate: currentDate.format(DATE_FORMAT)
+                    },
+                    elemDefault
+                );
                 service
                     .find('123')
                     .pipe(take(1))
@@ -39,11 +62,17 @@ describe('Service Tests', () => {
             it('should create a Artwork', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        id: 'ID'
+                        id: 'ID',
+                        creationDate: currentDate.format(DATE_FORMAT)
                     },
                     elemDefault
                 );
-                const expected = Object.assign({}, returnedFromService);
+                const expected = Object.assign(
+                    {
+                        creationDate: currentDate
+                    },
+                    returnedFromService
+                );
                 service
                     .create(new Artwork(null))
                     .pipe(take(1))
@@ -55,12 +84,28 @@ describe('Service Tests', () => {
             it('should update a Artwork', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        title: 'BBBBBB'
+                        title: 'BBBBBB',
+                        description: 'BBBBBB',
+                        price: 1,
+                        currency: 'BBBBBB',
+                        image: 'BBBBBB',
+                        thumbnail: 'BBBBBB',
+                        dimensions: 'BBBBBB',
+                        creationDate: currentDate.format(DATE_FORMAT),
+                        creditLine: 'BBBBBB',
+                        copyrightImage: 'BBBBBB',
+                        classification: 'BBBBBB',
+                        availability: 'BBBBBB'
                     },
                     elemDefault
                 );
 
-                const expected = Object.assign({}, returnedFromService);
+                const expected = Object.assign(
+                    {
+                        creationDate: currentDate
+                    },
+                    returnedFromService
+                );
                 service
                     .update(expected)
                     .pipe(take(1))
@@ -72,11 +117,27 @@ describe('Service Tests', () => {
             it('should return a list of Artwork', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        title: 'BBBBBB'
+                        title: 'BBBBBB',
+                        description: 'BBBBBB',
+                        price: 1,
+                        currency: 'BBBBBB',
+                        image: 'BBBBBB',
+                        thumbnail: 'BBBBBB',
+                        dimensions: 'BBBBBB',
+                        creationDate: currentDate.format(DATE_FORMAT),
+                        creditLine: 'BBBBBB',
+                        copyrightImage: 'BBBBBB',
+                        classification: 'BBBBBB',
+                        availability: 'BBBBBB'
                     },
                     elemDefault
                 );
-                const expected = Object.assign({}, returnedFromService);
+                const expected = Object.assign(
+                    {
+                        creationDate: currentDate
+                    },
+                    returnedFromService
+                );
                 service
                     .query(expected)
                     .pipe(

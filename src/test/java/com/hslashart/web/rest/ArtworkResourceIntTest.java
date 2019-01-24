@@ -23,6 +23,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.Validator;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,6 +38,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.hslashart.domain.enumeration.Currency;
+import com.hslashart.domain.enumeration.Availability;
 /**
  * Test class for the ArtworkResource REST controller.
  *
@@ -46,6 +51,39 @@ public class ArtworkResourceIntTest {
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final BigDecimal DEFAULT_PRICE = new BigDecimal(1);
+    private static final BigDecimal UPDATED_PRICE = new BigDecimal(2);
+
+    private static final Currency DEFAULT_CURRENCY = Currency.CA;
+    private static final Currency UPDATED_CURRENCY = Currency.US;
+
+    private static final String DEFAULT_IMAGE = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_THUMBNAIL = "AAAAAAAAAA";
+    private static final String UPDATED_THUMBNAIL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DIMENSIONS = "AAAAAAAAAA";
+    private static final String UPDATED_DIMENSIONS = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_CREATION_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATION_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_CREDIT_LINE = "AAAAAAAAAA";
+    private static final String UPDATED_CREDIT_LINE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_COPYRIGHT_IMAGE = "AAAAAAAAAA";
+    private static final String UPDATED_COPYRIGHT_IMAGE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CLASSIFICATION = "AAAAAAAAAA";
+    private static final String UPDATED_CLASSIFICATION = "BBBBBBBBBB";
+
+    private static final Availability DEFAULT_AVAILABILITY = Availability.AVAILABLE;
+    private static final Availability UPDATED_AVAILABILITY = Availability.SEE_ONLY;
 
     @Autowired
     private ArtworkRepository artworkRepository;
@@ -94,7 +132,18 @@ public class ArtworkResourceIntTest {
      */
     public static Artwork createEntity() {
         Artwork artwork = new Artwork()
-            .title(DEFAULT_TITLE);
+            .title(DEFAULT_TITLE)
+            .description(DEFAULT_DESCRIPTION)
+            .price(DEFAULT_PRICE)
+            .currency(DEFAULT_CURRENCY)
+            .image(DEFAULT_IMAGE)
+            .thumbnail(DEFAULT_THUMBNAIL)
+            .dimensions(DEFAULT_DIMENSIONS)
+            .creationDate(DEFAULT_CREATION_DATE)
+            .creditLine(DEFAULT_CREDIT_LINE)
+            .copyrightImage(DEFAULT_COPYRIGHT_IMAGE)
+            .classification(DEFAULT_CLASSIFICATION)
+            .availability(DEFAULT_AVAILABILITY);
         return artwork;
     }
 
@@ -119,6 +168,17 @@ public class ArtworkResourceIntTest {
         assertThat(artworkList).hasSize(databaseSizeBeforeCreate + 1);
         Artwork testArtwork = artworkList.get(artworkList.size() - 1);
         assertThat(testArtwork.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testArtwork.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testArtwork.getPrice()).isEqualTo(DEFAULT_PRICE);
+        assertThat(testArtwork.getCurrency()).isEqualTo(DEFAULT_CURRENCY);
+        assertThat(testArtwork.getImage()).isEqualTo(DEFAULT_IMAGE);
+        assertThat(testArtwork.getThumbnail()).isEqualTo(DEFAULT_THUMBNAIL);
+        assertThat(testArtwork.getDimensions()).isEqualTo(DEFAULT_DIMENSIONS);
+        assertThat(testArtwork.getCreationDate()).isEqualTo(DEFAULT_CREATION_DATE);
+        assertThat(testArtwork.getCreditLine()).isEqualTo(DEFAULT_CREDIT_LINE);
+        assertThat(testArtwork.getCopyrightImage()).isEqualTo(DEFAULT_COPYRIGHT_IMAGE);
+        assertThat(testArtwork.getClassification()).isEqualTo(DEFAULT_CLASSIFICATION);
+        assertThat(testArtwork.getAvailability()).isEqualTo(DEFAULT_AVAILABILITY);
 
         // Validate the Artwork in Elasticsearch
         verify(mockArtworkSearchRepository, times(1)).save(testArtwork);
@@ -155,7 +215,18 @@ public class ArtworkResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(artwork.getId())))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.intValue())))
+            .andExpect(jsonPath("$.[*].currency").value(hasItem(DEFAULT_CURRENCY.toString())))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
+            .andExpect(jsonPath("$.[*].thumbnail").value(hasItem(DEFAULT_THUMBNAIL.toString())))
+            .andExpect(jsonPath("$.[*].dimensions").value(hasItem(DEFAULT_DIMENSIONS.toString())))
+            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
+            .andExpect(jsonPath("$.[*].creditLine").value(hasItem(DEFAULT_CREDIT_LINE.toString())))
+            .andExpect(jsonPath("$.[*].copyrightImage").value(hasItem(DEFAULT_COPYRIGHT_IMAGE.toString())))
+            .andExpect(jsonPath("$.[*].classification").value(hasItem(DEFAULT_CLASSIFICATION.toString())))
+            .andExpect(jsonPath("$.[*].availability").value(hasItem(DEFAULT_AVAILABILITY.toString())));
     }
     
     @Test
@@ -168,7 +239,18 @@ public class ArtworkResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(artwork.getId()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()));
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.intValue()))
+            .andExpect(jsonPath("$.currency").value(DEFAULT_CURRENCY.toString()))
+            .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
+            .andExpect(jsonPath("$.thumbnail").value(DEFAULT_THUMBNAIL.toString()))
+            .andExpect(jsonPath("$.dimensions").value(DEFAULT_DIMENSIONS.toString()))
+            .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()))
+            .andExpect(jsonPath("$.creditLine").value(DEFAULT_CREDIT_LINE.toString()))
+            .andExpect(jsonPath("$.copyrightImage").value(DEFAULT_COPYRIGHT_IMAGE.toString()))
+            .andExpect(jsonPath("$.classification").value(DEFAULT_CLASSIFICATION.toString()))
+            .andExpect(jsonPath("$.availability").value(DEFAULT_AVAILABILITY.toString()));
     }
 
     @Test
@@ -188,7 +270,18 @@ public class ArtworkResourceIntTest {
         // Update the artwork
         Artwork updatedArtwork = artworkRepository.findById(artwork.getId()).get();
         updatedArtwork
-            .title(UPDATED_TITLE);
+            .title(UPDATED_TITLE)
+            .description(UPDATED_DESCRIPTION)
+            .price(UPDATED_PRICE)
+            .currency(UPDATED_CURRENCY)
+            .image(UPDATED_IMAGE)
+            .thumbnail(UPDATED_THUMBNAIL)
+            .dimensions(UPDATED_DIMENSIONS)
+            .creationDate(UPDATED_CREATION_DATE)
+            .creditLine(UPDATED_CREDIT_LINE)
+            .copyrightImage(UPDATED_COPYRIGHT_IMAGE)
+            .classification(UPDATED_CLASSIFICATION)
+            .availability(UPDATED_AVAILABILITY);
 
         restArtworkMockMvc.perform(put("/api/artworks")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -200,6 +293,17 @@ public class ArtworkResourceIntTest {
         assertThat(artworkList).hasSize(databaseSizeBeforeUpdate);
         Artwork testArtwork = artworkList.get(artworkList.size() - 1);
         assertThat(testArtwork.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testArtwork.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testArtwork.getPrice()).isEqualTo(UPDATED_PRICE);
+        assertThat(testArtwork.getCurrency()).isEqualTo(UPDATED_CURRENCY);
+        assertThat(testArtwork.getImage()).isEqualTo(UPDATED_IMAGE);
+        assertThat(testArtwork.getThumbnail()).isEqualTo(UPDATED_THUMBNAIL);
+        assertThat(testArtwork.getDimensions()).isEqualTo(UPDATED_DIMENSIONS);
+        assertThat(testArtwork.getCreationDate()).isEqualTo(UPDATED_CREATION_DATE);
+        assertThat(testArtwork.getCreditLine()).isEqualTo(UPDATED_CREDIT_LINE);
+        assertThat(testArtwork.getCopyrightImage()).isEqualTo(UPDATED_COPYRIGHT_IMAGE);
+        assertThat(testArtwork.getClassification()).isEqualTo(UPDATED_CLASSIFICATION);
+        assertThat(testArtwork.getAvailability()).isEqualTo(UPDATED_AVAILABILITY);
 
         // Validate the Artwork in Elasticsearch
         verify(mockArtworkSearchRepository, times(1)).save(testArtwork);
@@ -256,7 +360,18 @@ public class ArtworkResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(artwork.getId())))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.intValue())))
+            .andExpect(jsonPath("$.[*].currency").value(hasItem(DEFAULT_CURRENCY.toString())))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.[*].thumbnail").value(hasItem(DEFAULT_THUMBNAIL)))
+            .andExpect(jsonPath("$.[*].dimensions").value(hasItem(DEFAULT_DIMENSIONS)))
+            .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
+            .andExpect(jsonPath("$.[*].creditLine").value(hasItem(DEFAULT_CREDIT_LINE)))
+            .andExpect(jsonPath("$.[*].copyrightImage").value(hasItem(DEFAULT_COPYRIGHT_IMAGE)))
+            .andExpect(jsonPath("$.[*].classification").value(hasItem(DEFAULT_CLASSIFICATION)))
+            .andExpect(jsonPath("$.[*].availability").value(hasItem(DEFAULT_AVAILABILITY.toString())));
     }
 
     @Test

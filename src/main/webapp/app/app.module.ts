@@ -20,6 +20,7 @@ import { HslashartEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { HslashartViewModule } from './views/view.module';
 
 @NgModule({
     imports: [
@@ -38,7 +39,8 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         HslashartHomeModule,
         HslashartAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
-        HslashartEntityModule
+        HslashartEntityModule,
+        HslashartViewModule
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
     providers: [

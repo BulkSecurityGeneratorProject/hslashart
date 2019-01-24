@@ -17,6 +17,17 @@
                 "title": "Artwork"
             },
             "title": "Title",
+            "description": "Description",
+            "price": "Price",
+            "currency": "Currency",
+            "image": "Image",
+            "thumbnail": "Thumbnail",
+            "dimensions": "Dimensions",
+            "creationDate": "Creation Date",
+            "creditLine": "Credit Line",
+            "copyrightImage": "Copyright Image",
+            "classification": "Classification",
+            "availability": "Availability",
             "gallery": "Gallery"
         }
     }

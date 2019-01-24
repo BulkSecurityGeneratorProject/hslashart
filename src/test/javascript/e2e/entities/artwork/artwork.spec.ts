@@ -38,8 +38,30 @@ describe('Artwork e2e test', () => {
         const nbButtonsBeforeCreate = await artworkComponentsPage.countDeleteButtons();
 
         await artworkComponentsPage.clickOnCreateButton();
-        await promise.all([artworkUpdatePage.setTitleInput('title')]);
+        await promise.all([
+            artworkUpdatePage.setTitleInput('title'),
+            artworkUpdatePage.setDescriptionInput('description'),
+            artworkUpdatePage.setPriceInput('5'),
+            artworkUpdatePage.currencySelectLastOption(),
+            artworkUpdatePage.setImageInput('image'),
+            artworkUpdatePage.setThumbnailInput('thumbnail'),
+            artworkUpdatePage.setDimensionsInput('dimensions'),
+            artworkUpdatePage.setCreationDateInput('2000-12-31'),
+            artworkUpdatePage.setCreditLineInput('creditLine'),
+            artworkUpdatePage.setCopyrightImageInput('copyrightImage'),
+            artworkUpdatePage.setClassificationInput('classification'),
+            artworkUpdatePage.availabilitySelectLastOption()
+        ]);
         expect(await artworkUpdatePage.getTitleInput()).to.eq('title');
+        expect(await artworkUpdatePage.getDescriptionInput()).to.eq('description');
+        expect(await artworkUpdatePage.getPriceInput()).to.eq('5');
+        expect(await artworkUpdatePage.getImageInput()).to.eq('image');
+        expect(await artworkUpdatePage.getThumbnailInput()).to.eq('thumbnail');
+        expect(await artworkUpdatePage.getDimensionsInput()).to.eq('dimensions');
+        expect(await artworkUpdatePage.getCreationDateInput()).to.eq('2000-12-31');
+        expect(await artworkUpdatePage.getCreditLineInput()).to.eq('creditLine');
+        expect(await artworkUpdatePage.getCopyrightImageInput()).to.eq('copyrightImage');
+        expect(await artworkUpdatePage.getClassificationInput()).to.eq('classification');
         await artworkUpdatePage.save();
         expect(await artworkUpdatePage.getSaveButton().isPresent()).to.be.false;
 

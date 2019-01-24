@@ -14,6 +14,52 @@
         {
             "fieldName": "title",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "currency",
+            "fieldType": "Currency",
+            "fieldValues": "CA,US"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dimensions",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "creditLine",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "copyrightImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "classification",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "availability",
+            "fieldType": "Availability",
+            "fieldValues": "AVAILABLE,SEE_ONLY,SOLD"
         }
     ],
     "dto": "no",
