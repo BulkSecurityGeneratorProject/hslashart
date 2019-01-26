@@ -2,33 +2,33 @@
     "hslashartApp": {
         "artwork": {
             "home": {
-                "title": "Artworks",
-                "createLabel": "Créer un nouveau Artwork",
-                "createOrEditLabel": "Créer ou éditer un Artwork",
-                "search": "Recherche pour Artwork"
+                "title": "Oeuvres",
+                "createLabel": "Créer une nouvelle Oeuvres",
+                "createOrEditLabel": "Créer ou éditer une Oeuvres",
+                "search": "Recherche pour Oeuvres"
             },
-            "created": "Un nouveau Artwork a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Artwork avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Artwork avec l'identifiant {{ param }} a été supprimé",
+            "created": "Une nouvelle Oeuvres a été créée avec l'identifiant {{ param }}",
+            "updated": "L'Oeuvres avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "L'Oeuvres avec l'identifiant {{ param }} a été supprimée",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Artwork {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer l'Oeuvres {{ id }} ?"
             },
             "detail": {
-                "title": "Artwork"
+                "title": "Oeuvre"
             },
-            "title": "Title",
+            "title": "Titre",
             "description": "Description",
-            "price": "Price",
-            "currency": "Currency",
+            "price": "Prix",
+            "currency": "Devise",
             "image": "Image",
-            "thumbnail": "Thumbnail",
+            "thumbnail": "Miniature",
             "dimensions": "Dimensions",
-            "creationDate": "Creation Date",
-            "creditLine": "Credit Line",
-            "copyrightImage": "Copyright Image",
+            "creationDate": "Date de création",
+            "creditLine": "Crédit",
+            "copyrightImage": "Droit d'auteur image",
             "classification": "Classification",
-            "availability": "Availability",
-            "gallery": "Gallery"
+            "availability": "Disponibilité",
+            "gallery": "Gallerie"
         }
     }
 }

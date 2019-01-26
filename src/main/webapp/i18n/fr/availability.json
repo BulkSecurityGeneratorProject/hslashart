@@ -3,7 +3,6 @@
         "Availability": {
             "null": "",
             "AVAILABLE": "AVAILABLE",
-            "SEE_ONLY": "SEE_ONLY",
             "SOLD": "SOLD"
         }
     }

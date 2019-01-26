@@ -8,6 +8,7 @@ import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, AccountService, LoginModalService, LoginService } from 'app/core';
 import { ProfileService } from '../profiles/profile.service';
 import { BehaviorSubject } from 'rxjs';
+import { AUTHORITY } from 'app/shared/constants/authority';
 
 @Component({
     selector: 'jhi-navbar',

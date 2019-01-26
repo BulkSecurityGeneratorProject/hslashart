@@ -2,26 +2,26 @@
     "hslashartApp": {
         "gallery": {
             "home": {
-                "title": "Galleries",
-                "createLabel": "Créer un nouveau Gallery",
-                "createOrEditLabel": "Créer ou éditer un Gallery",
-                "search": "Recherche pour Gallery"
+                "title": "Galeries",
+                "createLabel": "Créer une nouvelle Galerie",
+                "createOrEditLabel": "Créer ou éditer une Galerie",
+                "search": "Recherche pour Galerie"
             },
-            "created": "Un nouveau Gallery a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Gallery avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Gallery avec l'identifiant {{ param }} a été supprimé",
+            "created": "Une nouvelle Galerie a été créée avec l'identifiant {{ param }}",
+            "updated": "La Galerie avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "La Galerie avec l'identifiant {{ param }} a été supprimée",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Gallery {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer la Galerie {{ id }} ?"
             },
             "detail": {
-                "title": "Gallery"
+                "title": "Galerie"
             },
-            "title": "Title",
-            "creationDate": "Creation Date",
+            "title": "Titre",
+            "creationDate": "Date de Création",
             "description": "Description",
-            "order": "Order",
-            "artwork": "Artwork",
-            "artist": "Artist"
+            "order": "Ordez",
+            "artwork": "Oeuvre",
+            "artist": "Artiste"
         }
     }
 }

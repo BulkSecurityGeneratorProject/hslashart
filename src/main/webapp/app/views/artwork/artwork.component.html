@@ -25,7 +25,15 @@
         </div>
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="artworks">
+    <div *ngIf="artworks">
+        <ul>
+            <li *ngFor="let item of items"></li>
+        </ul>
+        <mat-card>
+            {{ artwork.title }}
+        </mat-card>
+    </div>
+    <div class="table-responsive" *ngIf="artworks" hidden>
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
@@ -49,7 +57,7 @@
             <tr *ngFor="let artwork of artworks ;trackBy: trackId">
                 <td><a [routerLink]="['/artwork', artwork.id, 'view' ]">{{artwork.id}}</a></td>
                 <td>{{artwork.title}}</td>
-                <td>{{artwork.description}}</td>
+                <td>{{artwork.description | slice:0:70}}</td>
                 <td>{{artwork.price}}</td>
                 <td jhiTranslate="{{'hslashartApp.Currency.' + artwork.currency}}">{{artwork.currency}}</td>
                 <td>{{artwork.image}}</td>

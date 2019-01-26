@@ -2,7 +2,7 @@
     "hslashartApp": {
         "artist": {
             "home": {
-                "title": "Artists",
+                "title": "Artistes",
                 "createLabel": "Créer un nouveau Artist",
                 "createOrEditLabel": "Créer ou éditer un Artist",
                 "search": "Recherche pour Artist"
