@@ -104,7 +104,8 @@
             "delete": "Supprimer",
             "open": "Ouvrir",
             "save": "Sauvegarder",
-            "view": "Voir"
+            "view": "Voir",
+            "addToCart": "Ajouter au panier"
         },
         "detail": {
             "field": "Champs",

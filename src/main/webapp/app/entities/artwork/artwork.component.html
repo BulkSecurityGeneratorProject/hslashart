@@ -42,6 +42,7 @@
             <th jhiSortBy="copyrightImage"><span jhiTranslate="hslashartApp.artwork.copyrightImage">Copyright Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="classification"><span jhiTranslate="hslashartApp.artwork.classification">Classification</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="availability"><span jhiTranslate="hslashartApp.artwork.availability">Availability</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="artist.id"><span jhiTranslate="hslashartApp.artwork.artist">Artist</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -60,6 +61,11 @@
                 <td>{{artwork.copyrightImage}}</td>
                 <td>{{artwork.classification}}</td>
                 <td jhiTranslate="{{'hslashartApp.Availability.' + artwork.availability}}">{{artwork.availability}}</td>
+                <td>
+                    <div *ngIf="artwork.artist">
+                        <a [routerLink]="['../artist', artwork.artist?.id, 'view' ]" >{{artwork.artist?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

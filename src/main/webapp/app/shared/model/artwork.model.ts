@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 import { IGallery } from 'app/shared/model//gallery.model';
+import { IArtist } from 'app/shared/model//artist.model';
 
 export const enum Currency {
     CA = 'CA',
@@ -27,6 +28,7 @@ export interface IArtwork {
     classification?: string;
     availability?: Availability;
     galleries?: IGallery[];
+    artist?: IArtist;
 }
 
 export class Artwork implements IArtwork {
@@ -44,6 +46,7 @@ export class Artwork implements IArtwork {
         public copyrightImage?: string,
         public classification?: string,
         public availability?: Availability,
-        public galleries?: IGallery[]
+        public galleries?: IGallery[],
+        public artist?: IArtist
     ) {}
 }

@@ -1,6 +1,7 @@
 package com.hslashart.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -69,6 +70,11 @@ public class Artwork implements Serializable {
     @Field("galleries")
     @JsonIgnore
     private Set<Gallery> galleries = new HashSet<>();
+
+    @DBRef
+    @Field("artist")
+    @JsonIgnoreProperties("")
+    private Artist artist;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -258,6 +264,19 @@ public class Artwork implements Serializable {
 
     public void setGalleries(Set<Gallery> galleries) {
         this.galleries = galleries;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public Artwork artist(Artist artist) {
+        this.artist = artist;
+        return this;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

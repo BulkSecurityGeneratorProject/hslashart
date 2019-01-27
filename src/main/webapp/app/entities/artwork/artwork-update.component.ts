@@ -9,6 +9,8 @@ import { IArtwork } from 'app/shared/model/artwork.model';
 import { ArtworkService } from './artwork.service';
 import { IGallery } from 'app/shared/model/gallery.model';
 import { GalleryService } from 'app/entities/gallery';
+import { IArtist } from 'app/shared/model/artist.model';
+import { ArtistService } from 'app/entities/artist';
 
 @Component({
     selector: 'jhi-artwork-update',
@@ -19,12 +21,15 @@ export class ArtworkUpdateComponent implements OnInit {
     isSaving: boolean;
 
     galleries: IGallery[];
+
+    artists: IArtist[];
     creationDateDp: any;
 
     constructor(
         protected jhiAlertService: JhiAlertService,
         protected artworkService: ArtworkService,
         protected galleryService: GalleryService,
+        protected artistService: ArtistService,
         protected activatedRoute: ActivatedRoute
     ) {}
 
@@ -36,6 +41,12 @@ export class ArtworkUpdateComponent implements OnInit {
         this.galleryService.query().subscribe(
             (res: HttpResponse<IGallery[]>) => {
                 this.galleries = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.artistService.query().subscribe(
+            (res: HttpResponse<IArtist[]>) => {
+                this.artists = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -72,6 +83,10 @@ export class ArtworkUpdateComponent implements OnInit {
     }
 
     trackGalleryById(index: number, item: IGallery) {
+        return item.id;
+    }
+
+    trackArtistById(index: number, item: IArtist) {
         return item.id;
     }
 

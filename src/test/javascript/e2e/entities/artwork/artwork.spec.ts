@@ -50,7 +50,8 @@ describe('Artwork e2e test', () => {
             artworkUpdatePage.setCreditLineInput('creditLine'),
             artworkUpdatePage.setCopyrightImageInput('copyrightImage'),
             artworkUpdatePage.setClassificationInput('classification'),
-            artworkUpdatePage.availabilitySelectLastOption()
+            artworkUpdatePage.availabilitySelectLastOption(),
+            artworkUpdatePage.artistSelectLastOption()
         ]);
         expect(await artworkUpdatePage.getTitleInput()).to.eq('title');
         expect(await artworkUpdatePage.getDescriptionInput()).to.eq('description');

@@ -53,6 +53,12 @@
                 <dd>
                     <span jhiTranslate="{{'hslashartApp.Availability.' + artwork.availability}}">{{artwork.availability}}</span>
                 </dd>
+                <dt><span jhiTranslate="hslashartApp.artwork.artist">Artist</span></dt>
+                <dd>
+                    <div *ngIf="artwork.artist">
+                        <a [routerLink]="['/artist', artwork.artist?.id, 'view']">{{artwork.artist?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

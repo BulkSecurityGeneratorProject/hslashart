@@ -4,5 +4,5 @@ package com.hslashart.domain.enumeration;
  * The Availability enumeration.
  */
 public enum Availability {
-    AVAILABLE, SOLD
+    AVAILABLE, SEE_ONLY, SOLD
 }

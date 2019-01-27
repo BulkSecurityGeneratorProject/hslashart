@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="hslashartApp.artwork.home.title">Artworks</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-artwork" [routerLink]="['/artwork/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-artwork" [routerLink]="['/artwork/new']"  *jhiHasAnyAuthority="'ROLE_ADMIN'">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="hslashartApp.artwork.home.createLabel">
             Create new Artwork
@@ -26,12 +26,42 @@
     </div>
     <br/>
     <div *ngIf="artworks">
-        <ul>
-            <li *ngFor="let item of items"></li>
+        <ul class="d-flex flex-row justify-content-around align-items-start">
+            <li *ngFor="let artwork of artworks; trackBy: trackId" class="">
+                <mat-card >
+                    <mat-card-image>
+                        <a role="button" [routerLink]="['/artwork', artwork.id, 'view' ]">
+                        <img src="" alt="">
+                    </a>
+                    </mat-card-image>
+                    <mat-card-title>
+                        <p><a [routerLink]="['/artwork', artwork.id, 'view' ]">{{ artwork.title }}</a></p>
+                        <!-- <p><a [routerLink]="['/artist', artist.id, 'view' ]"></a></p> -->
+                    </mat-card-title>
+                    <mat-card-content>
+                        <div *ngIf="artwork.artist">
+                            <a [routerLink]="['../artist', artwork.artist?.id, 'view' ]" >{{artwork.artist?.id}}</a>
+                        </div>
+                            <i>{{ artwork.creationDate | date:'yyyy' }}</i>
+                            <p>{{ artwork.description | slice:0:25 }}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div><b>{{artwork.price }}</b></div>
+                            <div>
+                                <button type="submit"
+                                    class="btn btn-info btn-sm"
+                                    (click)="addToCart(artwork)">
+                                <fa-icon [icon]="'plus'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.addToCart">Add to cart</span>
+                            </button>
+                            </div>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </li>
         </ul>
-        <mat-card>
-            {{ artwork.title }}
-        </mat-card>
+        
     </div>
     <div class="table-responsive" *ngIf="artworks" hidden>
         <table class="table table-striped">

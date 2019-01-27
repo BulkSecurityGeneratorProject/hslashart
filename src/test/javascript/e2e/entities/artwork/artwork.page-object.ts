@@ -38,6 +38,7 @@ export class ArtworkUpdatePage {
     copyrightImageInput = element(by.id('field_copyrightImage'));
     classificationInput = element(by.id('field_classification'));
     availabilitySelect = element(by.id('field_availability'));
+    artistSelect = element(by.id('field_artist'));
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -151,6 +152,25 @@ export class ArtworkUpdatePage {
             .all(by.tagName('option'))
             .last()
             .click();
+    }
+
+    async artistSelectLastOption() {
+        await this.artistSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async artistSelectOption(option) {
+        await this.artistSelect.sendKeys(option);
+    }
+
+    getArtistSelect(): ElementFinder {
+        return this.artistSelect;
+    }
+
+    async getArtistSelectedOption() {
+        return this.artistSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

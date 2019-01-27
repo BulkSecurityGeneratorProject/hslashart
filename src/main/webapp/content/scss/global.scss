@@ -1,4 +1,5 @@
 @import 'bootstrap-variables';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 /* ==============================================================
 Bootstrap tweaks
@@ -224,3 +225,5 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+@import 'components/lists';

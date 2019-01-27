@@ -104,7 +104,8 @@
             "edit": "Edit",
             "open": "Open",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "addToCart": "Add to cart"
         },
         "detail": {
             "field": "Field",

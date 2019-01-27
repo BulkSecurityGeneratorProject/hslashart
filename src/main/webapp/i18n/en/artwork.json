@@ -28,7 +28,8 @@
             "copyrightImage": "Copyright Image",
             "classification": "Classification",
             "availability": "Availability",
-            "gallery": "Gallery"
+            "gallery": "Gallery",
+            "artist": "Artist"
         }
     }
 }

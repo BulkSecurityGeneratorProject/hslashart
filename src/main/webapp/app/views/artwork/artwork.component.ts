@@ -157,6 +157,10 @@ export class ArtworkComponent implements OnInit, OnDestroy {
         return result;
     }
 
+    addToCart(item: IArtwork) {
+        console.log('Artwork with id ' + item.id + ' added to cart');
+    }
+
     protected paginateArtworks(data: IArtwork[], headers: HttpHeaders) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = parseInt(headers.get('X-Total-Count'), 10);

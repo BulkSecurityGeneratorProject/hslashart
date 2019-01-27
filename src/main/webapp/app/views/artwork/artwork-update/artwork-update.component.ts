@@ -7,7 +7,7 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IArtwork } from 'app/shared/model/artwork.model';
 import { IGallery } from 'app/shared/model/gallery.model';
-import { GalleryService } from 'app/entities/gallery';
+import { GalleryService } from 'app/services/gallery.service';
 import { ArtworkService } from 'app/services/artwork.service';
 
 @Component({
@@ -19,6 +19,8 @@ export class ArtworkUpdateComponent implements OnInit {
     isSaving: boolean;
 
     galleries: IGallery[];
+
+    artworks: IArtwork[];
     creationDateDp: any;
 
     constructor(
@@ -36,6 +38,12 @@ export class ArtworkUpdateComponent implements OnInit {
         this.galleryService.query().subscribe(
             (res: HttpResponse<IGallery[]>) => {
                 this.galleries = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.artworkService.query().subscribe(
+            (res: HttpResponse<IArtwork[]>) => {
+                this.artworks = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -72,6 +80,10 @@ export class ArtworkUpdateComponent implements OnInit {
     }
 
     trackGalleryById(index: number, item: IGallery) {
+        return item.id;
+    }
+
+    trackArtworkById(index: number, item: IArtwork) {
         return item.id;
     }
 

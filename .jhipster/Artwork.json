@@ -8,6 +8,12 @@
             "relationshipType": "many-to-many",
             "ownerSide": false,
             "otherEntityRelationshipName": "artwork"
+        },
+        {
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

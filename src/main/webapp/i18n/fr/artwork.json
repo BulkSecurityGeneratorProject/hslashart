@@ -2,33 +2,34 @@
     "hslashartApp": {
         "artwork": {
             "home": {
-                "title": "Oeuvres",
-                "createLabel": "Créer une nouvelle Oeuvres",
-                "createOrEditLabel": "Créer ou éditer une Oeuvres",
-                "search": "Recherche pour Oeuvres"
+                "title": "Artworks",
+                "createLabel": "Créer un nouveau Artwork",
+                "createOrEditLabel": "Créer ou éditer un Artwork",
+                "search": "Recherche pour Artwork"
             },
-            "created": "Une nouvelle Oeuvres a été créée avec l'identifiant {{ param }}",
-            "updated": "L'Oeuvres avec l'identifiant {{ param }} a été mise à jour",
-            "deleted": "L'Oeuvres avec l'identifiant {{ param }} a été supprimée",
+            "created": "Un nouveau Artwork a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Artwork avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Artwork avec l'identifiant {{ param }} a été supprimé",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer l'Oeuvres {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer le Artwork {{ id }} ?"
             },
             "detail": {
-                "title": "Oeuvre"
+                "title": "Artwork"
             },
-            "title": "Titre",
+            "title": "Title",
             "description": "Description",
-            "price": "Prix",
-            "currency": "Devise",
+            "price": "Price",
+            "currency": "Currency",
             "image": "Image",
-            "thumbnail": "Miniature",
+            "thumbnail": "Thumbnail",
             "dimensions": "Dimensions",
-            "creationDate": "Date de création",
-            "creditLine": "Crédit",
-            "copyrightImage": "Droit d'auteur image",
+            "creationDate": "Creation Date",
+            "creditLine": "Credit Line",
+            "copyrightImage": "Copyright Image",
             "classification": "Classification",
-            "availability": "Disponibilité",
-            "gallery": "Gallerie"
+            "availability": "Availability",
+            "gallery": "Gallery",
+            "artist": "Artist"
         }
     }
 }

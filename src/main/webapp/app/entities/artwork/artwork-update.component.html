@@ -80,6 +80,13 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hslashartApp.artwork.artist" for="field_artist">Artist</label>
+                    <select class="form-control" id="field_artist" name="artist" [(ngModel)]="artwork.artist" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="artistOption.id === artwork.artist?.id ? artwork.artist : artistOption" *ngFor="let artistOption of artists; trackBy: trackArtistById">{{artistOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
